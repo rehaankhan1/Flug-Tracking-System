@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenGL Globe Example</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+    <!-- Load Three.js from a reliable CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <script>
+        // Set up the scene
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create a globe (sphere)
+        const geometry = new THREE.SphereGeometry(5, 64, 64);
+        const textureLoader = new THREE.TextureLoader();
+        const texture = textureLoader.load('/static/khan.jpeg'); // Example texture URL
+        const material = new THREE.MeshBasicMaterial({ map: texture });
+        const globe = new THREE.Mesh(geometry, material);
+        scene.add(globe);
+
+        // Add lighting
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(0, 1, 1).normalize();
+        scene.add(light);
+
+        // Set camera position
+        camera.position.z = 10;
+
+        // User interaction variables
+        let userInteracting = false;
+        let lastInteractionTime = Date.now();
+        const interactionTimeout = 3000;
+
+        // Spin globe function
+        function spinGlobe() {
+            const now = Date.now();
+            if (!userInteracting && (now - lastInteractionTime > interactionTimeout)) {
+                globe.rotation.y += 0.01; // Adjust rotation speed as necessary
+            }
+            requestAnimationFrame(spinGlobe);
+            renderer.render(scene, camera);
+        }
+
+        // Event listeners for interaction
+        function onInteractionStart() {
+            userInteracting = true;
+            lastInteractionTime = Date.now();
+        }
+
+        function onInteractionEnd() {
+            userInteracting = false;
+            lastInteractionTime = Date.now();
+        }
+
+        // Add mouse events
+        window.addEventListener('mousedown', onInteractionStart);
+        window.addEventListener('mouseup', onInteractionEnd);
+        window.addEventListener('touchstart', onInteractionStart);
+        window.addEventListener('touchend', onInteractionEnd);
+
+        // Initialize the rendering loop
+        spinGlobe();
+        renderer.render(scene, camera);
+    </script>
+</body>
+</html>

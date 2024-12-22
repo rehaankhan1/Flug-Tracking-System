@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Update a feature in real-time</title>
+    <meta property="og:description" content="Change an existing feature on your map in real-time by updating its data." />
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        html, body, #map { height: 100%; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+// Function to convert JSON to GeoJSON
+function convertToGeoJSON(data) {
+    const geoJSON = {
+        type: "FeatureCollection",
+        features: [
+            {
+                type: "Feature",
+                geometry: {
+                    type: "LineString",
+                    coordinates: []
+                },
+                properties: {
+                    icao24: data.icao24,
+                    callsign: data.callsign
+                }
+            }
+        ]
+    };
+   
+    data.path.forEach(point => {
+        const [timestamp, latitude, longitude, altitude, heading, onGround] = point;
+        geoJSON.features[0].geometry.coordinates.push([longitude, latitude]);
+    });
+ 
+    return geoJSON;
+}
+
+// Function to get query parameter by name
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+mapboxgl.accessToken = 'pk.eyJ1IjoibGV2ZWw5bmluZSIsImEiOiJjbHgxMGliczUwNzBkMmlxcHY5eGl3NXVuIn0.U42ZWqijRx_UDu-ciiBZmw';
+const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/level9nine/clxdqm3b8001j01pc3ekp0phz',
+    projection: 'globe',
+    bearing: 0, // Start with no rotation
+    pitch: 10, // Tilt the view to simulate a globe
+});
+
+// Get 'icao24' parameter from URL
+const icao24 = getQueryParam('icao24');
+
+let firstLoad = true; // Flag to check if it's the first load
+
+if (icao24) {
+    map.on('load', () => {
+
+        // Enable zoom and pan controls for user interaction
+        map.addControl(new mapboxgl.NavigationControl());
+
+        function updateMapData() {
+            // Fetch the JSON data
+            d3.json(`/track?icao24=${icao24}`, (err, data) => {
+
+                 // Check if an error is a 500, indicating the flight has landed
+                 if (err && err.status === 500) {
+                    // Stop further updates
+                    clearInterval(updateMapData);
+
+                    // Display a popup message on the map
+                    new mapboxgl.Popup({ closeOnClick: false })
+                        .setLngLat(map.getCenter()) // Center the popup on the map's current view
+                        .setHTML("<h3>Flight Landed</h3><p>No further data is available.</p>")
+                        .addTo(map);
+
+                    return; // Exit function if flight has landed
+                }
+
+                if (err) throw err;
+
+                // Convert the loaded data to GeoJSON format
+                data = convertToGeoJSON(data);
+
+                // Get the full coordinate list
+                const coordinates = data.features[0].geometry.coordinates;
+                const endPoint = coordinates[coordinates.length - 1];
+                const prevPoint = coordinates[coordinates.length - 2];
+
+                // Calculate bearing from the second-to-last point to the endpoint
+                const lat1 = prevPoint[1] * (Math.PI / 180);
+                const lon1 = prevPoint[0] * (Math.PI / 180);
+                const lat2 = endPoint[1] * (Math.PI / 180);
+                const lon2 = endPoint[0] * (Math.PI / 180);
+                const dLon = lon2 - lon1;
+                const x = Math.sin(dLon) * Math.cos(lat2);
+                const y = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+                let bearing = Math.atan2(x, y);
+                bearing = (bearing * (180 / Math.PI) + 360) % 360; // Convert to degrees
+
+                // Update the trace with new data
+                if (map.getSource('trace')) {
+                    map.getSource('trace').setData(data);
+                } else {
+                    // Add the trace (full path) to the map on first load
+                    map.addSource('trace', { type: 'geojson', data });
+                    map.addLayer({
+                        'id': 'trace',
+                        'type': 'line',
+                        'source': 'trace',
+                        'paint': {
+                            'line-color': 'red',
+                            'line-opacity': 1,
+                            'line-width': 5
+                        }
+                    });
+                }
+
+                // Update the icon position at the end destination with calculated bearing
+                const pointGeoJSON = {
+                    type: 'FeatureCollection',
+                    features: [{
+                        type: 'Feature',
+                        geometry: { type: 'Point', coordinates: endPoint },
+                        properties: { bearing: bearing } // Store bearing if needed
+                    }]
+                };
+
+                if (map.getSource('point1')) {
+                    map.getSource('point1').setData(pointGeoJSON);
+                    map.setLayoutProperty('point1', 'icon-rotate', bearing);
+                } else {
+                    map.addSource('point1', { type: 'geojson', data: pointGeoJSON });
+                    map.addLayer({
+                        'id': 'point1',
+                        'source': 'point1',
+                        'type': 'symbol',
+                        'layout': {
+                            'icon-image': 'airport-9',
+                            'icon-size': 2.2,
+                            'icon-rotation-alignment': 'map',
+                            'icon-allow-overlap': true,
+                            'icon-ignore-placement': true,
+                            'icon-rotate': bearing // Apply bearing to icon rotation
+                        }
+                    });
+                }
+
+
+                // If it's the first load, set the initial center and zoom to the endpoint
+                if (firstLoad) {
+                    map.flyTo({
+                        center: endPoint,
+                        zoom: 7, // Adjust this initial zoom level to your preference
+                        pitch: 40,
+                        speed: 1.2,
+                        curve: 1.42
+                    });
+                    firstLoad = false; // Set flag to false after the initial load
+                }
+                 
+
+
+            });
+        }
+
+        // Initial data load
+        updateMapData();
+
+        // Update data every 5 seconds
+        setInterval(updateMapData, 5000);
+    });
+} else {
+    // Show an alert if icao24 is missing
+    alert('Error: The "icao24" parameter is required in the URL.');
+}
+</script>
+</body>
+</html>

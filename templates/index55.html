@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mapbox GL JS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibGV2ZWw5bmluZSIsImEiOiJjbHgxMGliczUwNzBkMmlxcHY5eGl3NXVuIn0.U42ZWqijRx_UDu-ciiBZmw';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/level9nine/clxdqm3b8001j01pc3ekp0phz',
+            zoom: 1,
+            center: [13.5020, 52.3667], // Centered to show the world map
+            projection: 'globe',
+            bearing: 0, // Start with no rotation
+            pitch: 10, // Tilt the view to simulate a globe
+        });
+
+        map.on('style.load', () => {
+            map.setFog({}); // Set the default atmosphere style
+        });
+
+        let spinEnabled = true;
+        let userInteracting = false;
+        const maxSpinZoom = 5;
+        const slowSpinZoom = 3;
+        const secondsPerRevolution = 120;
+        let lastInteractionTime = Date.now();
+        const interactionTimeout = 3000; // 3 seconds of no interaction to resume spinning
+
+        function spinGlobe() {
+            const now = Date.now();
+            if (spinEnabled && !userInteracting && (now - lastInteractionTime > interactionTimeout)) {
+                const zoom = map.getZoom();
+                if (zoom < maxSpinZoom) {
+                    let distancePerSecond = 360 / secondsPerRevolution;
+                    if (zoom > slowSpinZoom) {
+                        // Slow spinning at higher zooms
+                        const zoomDif = (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom);
+                        distancePerSecond *= zoomDif;
+                    }
+                    const center = map.getCenter();
+                    center.lng -= distancePerSecond / 60; // divide by 60 to get per-frame movement
+                    map.setCenter(center);
+                }
+            }
+            // Schedule the next frame.
+            requestAnimationFrame(spinGlobe);
+        }
+
+        // Event listeners to handle user interaction
+        function onInteractionStart() {
+            userInteracting = true;
+            lastInteractionTime = Date.now();
+        }
+
+        function onInteractionEnd() {
+            userInteracting = false;
+            lastInteractionTime = Date.now();
+        }
+
+        map.on('mousedown', onInteractionStart);
+        map.on('dragstart', onInteractionStart);
+        map.on('zoomstart', onInteractionStart);
+        map.on('rotate', onInteractionStart);
+
+        map.on('mouseup', onInteractionEnd);
+        map.on('dragend', onInteractionEnd);
+        map.on('zoomend', onInteractionEnd);
+
+        // Fetch flight data from the Flask backend
+        async function fetchFlightData() {
+            try {
+                const response = await fetch('/all-flights');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const flightData = await response.json();
+                console.log("Fetched flight data:", flightData); // Log the fetched data
+                return flightData;
+            } catch (error) {
+                console.error("Error fetching flight data:", error);
+            }
+        }
+
+        async function updateFlights() {
+            const flightData = await fetchFlightData();
+            if (flightData) {
+                flightData.forEach((flight, index) => {
+                    const departureLatLng = [139.781113, 35.553333]; // Example departure coordinates
+                    const aircraftLatLng = [flight.longitude, flight.latitude];
+                    drawRoute(index, departureLatLng, aircraftLatLng, flight);
+                });
+            }
+        }
+
+        function drawRoute(index, origin, destination, flight) {
+            const point = {
+                'type': 'FeatureCollection',
+                'features': [
+                    {
+                        'type': 'Feature',
+                        'properties': {
+                            'bearing': turf.bearing(turf.point(origin), turf.point(destination)),
+                            'flight': JSON.stringify(flight) // Store flight information as a string
+                        },
+                        'geometry': {
+                            'type': 'Point',
+                            'coordinates': destination
+                        }
+                    }
+                ]
+            };
+
+            if (map.getSource(`route${index}`)) {
+                map.getSource(`point${index}`).setData(point);
+            } else {
+                map.addSource(`point${index}`, {
+                    'type': 'geojson',
+                    'data': point
+                });
+
+                map.addLayer({
+                    'id': `route${index}`,
+                    'source': `route${index}`,
+                    'type': 'line',
+                    'paint': {
+                        'line-width': 2,
+                        'line-color': '#007cbf'
+                    }
+                });
+
+                map.addLayer({
+                    'id': `point${index}`,
+                    'source': `point${index}`,
+                    'type': 'symbol',
+                    'layout': {
+                        'icon-image': 'airport-9',
+                        'icon-size': 0.9,
+                        'icon-rotate': ['get', 'bearing'],
+                        'icon-rotation-alignment': 'map',
+                        'icon-allow-overlap': true,
+                        'icon-ignore-placement': true
+                    }
+                });
+
+                map.on('click', `point${index}`, (e) => {
+                    const coordinates = e.features[0].geometry.coordinates.slice();
+                    const flightInfo = JSON.parse(e.features[0].properties.flight);
+                    const description = `Flight: ${flightInfo.Flight}<br>Destination: ${flightInfo.Destination}`;
+                    new mapboxgl.Popup()
+                        .setLngLat(coordinates)
+                        .setHTML(description)
+                        .addTo(map);
+                });
+            }
+        }
+
+        map.on('load', () => {
+            updateFlights(); // Initial flight data fetch
+            setInterval(updateFlights, 3000); // Update every 60 seconds
+        });
+
+        // Start spinning the globe
+        spinGlobe();
+    </script>
+</body>
+</html>

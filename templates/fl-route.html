@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Update a feature in real-time</title>
+        <meta property="og:description" content="Change an existing feature on your map in real-time by updating its data." />
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
+        <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
+        <style>
+            body { margin: 0; padding: 0; }
+            html, body, #map { height: 100%; }
+        </style>
+    </head>
+<body>
+<div id="map"></div>
+ 
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+  // Function to convert JSON to GeoJSON
+function convertToGeoJSON(data) {
+    const geoJSON = {
+        type: "FeatureCollection",
+        features: [
+            {
+                type: "Feature",
+                geometry: {
+                    type: "LineString",
+                    coordinates: []
+                },
+                properties: {
+                    icao24: data.icao24,
+                    callsign: data.callsign
+                }
+            }
+        ]
+    };
+   
+    data.path.forEach(point => {
+        const [timestamp, latitude, longitude, altitude, heading, onGround] = point;
+        geoJSON.features[0].geometry.coordinates.push([longitude, latitude]);
+    });
+ 
+    return geoJSON;
+}
+
+// Function to get query parameter by name
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+ 
+mapboxgl.accessToken = 'pk.eyJ1IjoibGV2ZWw5bmluZSIsImEiOiJjbHgxMGliczUwNzBkMmlxcHY5eGl3NXVuIn0.U42ZWqijRx_UDu-ciiBZmw';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/level9nine/clxdqm3b8001j01pc3ekp0phz',
+            zoom: 1,
+            center: [13.5020, 52.3667], // Centered to show the world map
+            projection: 'globe',
+            bearing: 0, // Start with no rotation
+            pitch: 10, // Tilt the view to simulate a globe
+        });
+ 
+// Get 'icao24' parameter from URL
+const icao24 = getQueryParam('icao24');
+
+
+
+if (icao24) {
+
+map.on('load', () => {
+    // Fetch the JSON data
+    d3.json(`/track?icao24=${icao24}`, (err, data) => {
+        if (err) throw err;
+ 
+        // Convert the loaded data to GeoJSON format
+        data = convertToGeoJSON(data);
+ 
+        // Save full coordinate list for later
+        const coordinates = data.features[0].geometry.coordinates;
+ 
+        // Start by showing just the first coordinate
+        data.features[0].geometry.coordinates = [coordinates[0]];
+ 
+        // Add it to the map
+        map.addSource('trace', { type: 'geojson', data });
+        map.addLayer({
+            'id': 'trace',
+            'type': 'line',
+            'source': 'trace',
+            'paint': {
+                'line-color': 'red',
+                'line-opacity': 1,
+                'line-width': 5
+            }
+        });
+ 
+        // Add a moving point on the trace
+        const pointGeoJSON = {
+            type: 'FeatureCollection',
+            features: [{
+                type: 'Feature',
+                geometry: { type: 'Point', coordinates: coordinates[0] }
+            }]
+        };
+
+        map.addSource('point1', { type: 'geojson', data: pointGeoJSON });
+        map.addLayer({
+            'id': 'point1',
+            'source': 'point1',
+            'type': 'symbol',
+            'layout': {
+                'icon-image': 'airport-9',
+                'icon-size': 2.2,
+                'icon-rotation-alignment': 'map',
+                'icon-allow-overlap': true,
+                'icon-ignore-placement': true
+            }
+        });
+ 
+        // Setup the viewport
+        map.jumpTo({ 'center': coordinates[0], 'zoom': 14 });
+        map.setPitch(30);
+ 
+        // Add more coordinates from the saved list and update the map at intervals
+        let i = 1;
+        const timer = window.setInterval(() => {
+            if (i < coordinates.length) {
+                data.features[0].geometry.coordinates.push(coordinates[i]);
+                map.getSource('trace').setData(data);
+
+// Calculate bearing for icon rotation
+const currentPoint = coordinates[i - 1]; // Previous coordinate
+        const nextPoint = coordinates[i]; // Current coordinate
+
+        // Calculate bearing
+        const lat1 = currentPoint[1] * (Math.PI / 180);
+        const lon1 = currentPoint[0] * (Math.PI / 180);
+        const lat2 = nextPoint[1] * (Math.PI / 180);
+        const lon2 = nextPoint[0] * (Math.PI / 180);
+
+        const dLon = lon2 - lon1;
+        const x = Math.sin(dLon) * Math.cos(lat2);
+        const y = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+        let bearing = Math.atan2(x, y);
+        bearing = (bearing * (180 / Math.PI) + 360) % 360; // Convert to degrees
+
+        // Update moving point position and bearing
+        pointGeoJSON.features[0].geometry.coordinates = nextPoint;
+        pointGeoJSON.features[0].properties = { bearing: bearing }; // Store the bearing if needed
+        map.getSource('point1').setData(pointGeoJSON);
+
+        // Rotate the icon based on bearing
+        map.setLayoutProperty('point1', 'icon-rotate', bearing);
+
+                map.panTo(coordinates[i]);
+                i++;
+            } else {
+                window.clearInterval(timer);
+            }
+        }, 1000);
+    });
+});
+
+} else {
+    // Show an alert if icao24 is missing
+    alert('Error: The "icao24" parameter is required in the URL.');
+}
+
+
+
+
+</script>
+</body>
+</html>
