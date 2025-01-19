@@ -10,6 +10,26 @@
     <style>
         body { margin: 0; padding: 0; }
         #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        .mapboxgl-popup-content {
+    border: none !important;
+    box-shadow: none !important; /* Remove any box-shadow */
+}
+.mapboxgl-popup {
+    border: none !important;
+    box-shadow: none !important; /* Remove shadow from the entire popup */
+    background: transparent !important; /* Ensure the background is consistent */
+}
+
+.mapboxgl-popup-content {
+    border: none !important;
+    box-shadow: none !important; /* Remove any inner shadow */
+    padding: 0 !important; /* Remove padding if needed */
+    background: transparent !important; /* Transparent background for debugging */
+}
+
+.mapboxgl-popup-tip {
+    display: none !important; /* Remove the small arrow (tip) if causing issues */
+}
     </style>
 </head>
 <body>
@@ -25,6 +45,9 @@
             bearing: 0, // Start with no rotation
             pitch: 10, // Tilt the view to simulate a globe
         });
+
+                // Your OpenWeatherMap API Key
+                const weatherApiKey = '1df29cdb2c33d3a23fe6c74e8fcaaac8';
 
         map.on('style.load', () => {
             map.setFog({}); // Set the default atmosphere style
@@ -81,7 +104,7 @@
         // Fetch flight data from the Flask backend
         async function fetchFlightData() {
             try {
-                const response = await fetch('/all-flights');
+                const response = await fetch('/all-flights11');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -93,82 +116,185 @@
             }
         }
 
-        async function updateFlights() {
-            const flightData = await fetchFlightData();
-            if (flightData) {
-                flightData.forEach((flight, index) => {
-                    const departureLatLng = [139.781113, 35.553333]; // Example departure coordinates
-                    const aircraftLatLng = [flight.longitude, flight.latitude];
-                    drawRoute(index, departureLatLng, aircraftLatLng, flight);
-                });
-            }
+        // Fetch weather data for each city
+        async function fetchWeather(lat, long) {
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${weatherApiKey}`;
+            const response = await fetch(url);
+            return response.json();
         }
 
-        function drawRoute(index, origin, destination, flight) {
-            const point = {
-                'type': 'FeatureCollection',
-                'features': [
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            'bearing': turf.bearing(turf.point(origin), turf.point(destination)),
-                            'flight': JSON.stringify(flight) // Store flight information as a string
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': destination
-                        }
-                    }
-                ]
-            };
 
-            if (map.getSource(`route${index}`)) {
-                map.getSource(`point${index}`).setData(point);
-            } else {
-                map.addSource(`point${index}`, {
-                    'type': 'geojson',
-                    'data': point
-                });
-
-                map.addLayer({
-                    'id': `route${index}`,
-                    'source': `route${index}`,
-                    'type': 'line',
-                    'paint': {
-                        'line-width': 2,
-                        'line-color': '#007cbf'
-                    }
-                });
-
-                map.addLayer({
-                    'id': `point${index}`,
-                    'source': `point${index}`,
-                    'type': 'symbol',
-                    'layout': {
-                        'icon-image': 'airport-9',
-                        'icon-size': 0.9,
-                        'icon-rotate': ['get', 'bearing'],
-                        'icon-rotation-alignment': 'map',
-                        'icon-allow-overlap': true,
-                        'icon-ignore-placement': true
-                    }
-                });
-
-                map.on('click', `point${index}`, (e) => {
-                    const coordinates = e.features[0].geometry.coordinates.slice();
-                    const flightInfo = JSON.parse(e.features[0].properties.flight);
-                    const description = `Flight: ${flightInfo.Flight}<br>Destination: ${flightInfo.Destination}`;
-                    new mapboxgl.Popup()
-                        .setLngLat(coordinates)
-                        .setHTML(description)
-                        .addTo(map);
-                });
-            }
+async function updateFlights() {
+    try {
+        const flightData = await fetchFlightData();
+        if (flightData && Array.isArray(flightData)) {
+            flightData.forEach((flight, index) => {
+                const departureLatLng = [139.781113, 35.553333]; // Example departure coordinates
+                const aircraftLatLng = [flight.longitude, flight.latitude];
+                drawRoute(index, departureLatLng, aircraftLatLng, flight);
+            });
+        } else {
+            console.error("Invalid flight data:", flightData);
         }
+    } catch (error) {
+        console.error("Error updating flights:", error);
+    }
+}
+
+function drawRoute(index, origin, destination, flight) {
+    try {
+        const heading = parseFloat(flight.Heading.replace("°", "")); // Convert heading to a numeric value
+        const point = {
+            type: 'FeatureCollection',
+            features: [
+                {
+                    type: 'Feature',
+                    properties: {
+                        heading, // Store heading as a property
+                        flight: JSON.stringify(flight), // Store flight information as a string
+                    },
+                    geometry: {
+                        type: 'Point',
+                        coordinates: destination,
+                    },
+                },
+            ],
+        };
+
+        const route = {
+            type: 'FeatureCollection',
+            features: [
+                {
+                    type: 'Feature',
+                    geometry: {
+                        type: 'LineString',
+                        coordinates: [origin, destination],
+                    },
+                },
+            ],
+        };
+
+        // Update or add the point source
+        if (map.getSource(`point${index}`)) {
+            map.getSource(`point${index}`).setData(point);
+        } else {
+            map.addSource(`point${index}`, {
+                type: 'geojson',
+                data: point,
+            });
+
+            map.addLayer({
+                id: `point${index}`,
+                source: `point${index}`,
+                type: 'symbol',
+                layout: {
+                    'icon-image': 'airport-9',
+                    'icon-size': 1.2,
+                    'icon-rotate': ['get', 'heading'], // Use the heading property for rotation
+                    'icon-rotation-alignment': 'map',
+                    'icon-allow-overlap': true,
+                    'icon-ignore-placement': true,
+                },
+            });
+
+           map.on('click', `point${index}`, async (e) => {
+                const coordinates = e.features[0].geometry.coordinates.slice();
+                console.log(e.features[0]);
+                const flightInfo = JSON.parse(e.features[0].properties.flight);
+                const weatherData = await fetchWeather(coordinates[1], coordinates[0]);
+                console.log(weatherData);
+                const description = `
+    <div style="
+        background: linear-gradient(135deg, #4a4a4a, #1e1e1e); 
+        color: #f9f9f9; 
+        padding: 15px; 
+        border-radius: 12px; 
+        font-family: 'Roboto', sans-serif; 
+        line-height: 1.8; 
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+        transform: scale(1.05); /* Always show scaled version */
+        position: relative; 
+        width: 175px; /* Fixed width */
+        height: 190px; /* Adjusted height to fit the link */
+        overflow: hidden;">
+        <h3 style="margin: 0 0 10px; font-size: 1.2em; color: #ffd700;">✈ Flight Information</h3>
+        <strong>Flight:</strong> ${flightInfo.Flight}<br>
+        <strong>Destination:</strong> ${flightInfo.Destination}<br>
+        <strong>Temperature:</strong> ${weatherData.main.temp}°C<br>
+        <strong>Weather:</strong>
+        <span style="display: inline-flex; align-items: center;">
+            ${weatherData.weather[0].description}
+            <img 
+                src="https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png" 
+                alt="${weatherData.weather[0].description}" 
+                style="width: 24px; height: 24px; margin-left: 8px;">
+        </span><br>
+        <strong>Humidity:</strong> ${weatherData.main.humidity}%
+        <!-- Custom close button -->
+        <div style="
+            position: absolute; 
+            top: 8px; /* Adjusted for better alignment */
+            right: 8px; /* Adjusted for symmetry */
+            cursor: pointer; 
+            font-size: 10px; /* Smaller font size for better fit */
+            color: #fff; 
+            background: rgba(255, 255, 255, 0.3); /* Slightly increased opacity for better visibility */
+            border-radius: 50%; 
+            width: 15px; /* Perfectly sized button */
+            height: 14px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Optional shadow for a subtle floating effect */
+        "
+        onclick="this.closest('.mapboxgl-popup').remove();">
+            ✖
+        </div>
+        <!-- Add the link at the bottom -->
+        <div style="position: absolute; bottom: 10px; left: 15px;">
+            <a href="http://127.0.0.1:5000/live-route-weather?icao24=${flightInfo.ICAO24}" target="_blank" style="
+                color: #ffd700; 
+                text-decoration: none; 
+                font-weight: bold; 
+                font-size: 0.9em; 
+                padding: 5px 10px; 
+                border: 1px solid #ffd700; 
+                border-radius: 4px; 
+                background: transparent;
+                transition: background 0.3s ease, color 0.3s ease;">
+                Track Live
+            </a>
+        </div>
+    </div>`;
+
+
+                new mapboxgl.Popup({ closeButton: false })
+                    .setLngLat(coordinates)
+                    .setHTML(description)
+                    .addTo(map);
+            });
+        }
+
+        // Update or add the route source
+        if (map.getSource(`route${index}`)) {
+            map.getSource(`route${index}`).setData(route);
+        } else {
+            map.addSource(`route${index}`, {
+                type: 'geojson',
+                data: route,
+            });
+
+        }
+    } catch (error) {
+        console.error(`Error drawing route for index ${index}:`, error);
+    }
+}
+
+        
 
         map.on('load', () => {
             updateFlights(); // Initial flight data fetch
-            setInterval(updateFlights, 3000); // Update every 60 seconds
+            setInterval(updateFlights, 10000); // Update every 60 seconds
         });
 
         // Start spinning the globe

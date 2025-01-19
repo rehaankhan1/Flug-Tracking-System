@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Update a feature in real-time</title>
+    <title>Flight Tracker</title>
     <meta property="og:description" content="Change an existing feature on your map in real-time by updating its data." />
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,15 +9,205 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
     <style>
-        body { margin: 0; padding: 0; }
-        html, body, #map { height: 100%; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            overflow: hidden;
+        }
+
+        #sidebar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            overflow-y: auto;
+            height: auto; /* Adjust height to fit content */
+            max-height: 100%; /* Prevent overflow beyond the viewport */
+        }
+
+        #sidebar.closed {
+            transform: translateX(-300px);
+        }
+
+        #burger {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    z-index: 1500;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text/icon */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 18px; /* Increase icon size for better visibility */
+    border-radius: 5px; /* Optional: rounded corners for the button */
+}
+
+
+        .flight-logo {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .flight-logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        .flight-info {
+            padding: 10px;
+        }
+
+        .flight-info h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .status {
+            position: relative;
+            top: 20px;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .details {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .details .location {
+
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .details .location h2 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .details .location p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .timeline {
+
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .timeline .progress {
+            height: 4px;
+            background-color: #ddd;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .timeline .progress .elapsed {
+            height: 100%;
+            background-color: #28a745;
+            width: 65%;
+        }
+
+        .timeline .labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #555;
+        }
+
+        #map1 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            transition: margin-left 0.3s ease, width 0.3s ease;
+        }
+
+        #map1.sidebar-open {
+            margin-left: 300px;
+            width: calc(100% - 300px);
+        }
     </style>
 </head>
 <body>
-<div id="map"></div>
+
+    <button id="burger">☰</button>
+    <div id="sidebar">
+        <div class="flight-logo" style="position: relative; margin-left: 85px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/KLM_logo.svg/1200px-KLM_logo.svg.png">
+        </div>
+        <div class="flight-info" style=" border-top: 1px solid #ddd;text-align: center;">
+            <h1>KLM Dutch Airlines 810</h1>
+            </div>
+            <div class="flight-info" style=" border-top: 1px solid #ddd;text-align: center;padding-top: 0px;margin-bottom: 25px;">
+            <p class="status" style="font-size: 30px;">EN ROUTE</p>
+            <p>Arriving in 39 minutes</p>
+        </div>
+    
+        <div class="details">
+            <div class="location">
+                <h2>KUL</h2>
+                <p>Sepang, Malaysia</p>
+                <p>Saturday 18-Jan-2025 11:53 PM</p>
+            </div>
+    
+            <div class="timeline">
+                <div class="progress">
+                    <div class="elapsed"></div>
+                </div>
+                <div class="labels">
+                    <span>12h 17m elapsed</span>
+                    <span>12h 57m total travel time</span>
+                </div>
+            </div>
+    
+            <div class="location" style="position: relative;top: 28px;">
+                <h2>AMS</h2>
+                <p>Amsterdam, Netherlands</p>
+                <p>Sunday 19-Jan-2025 05:50 AM</p>
+            </div>
+            </div>
+            <div class="details" style="position: relative;margin-top:10px;">
+            <div class="weather" style="position: relative;margin-bottom: 30px;">
+                <h2>Weather Details</h2>
+                <p><strong>Temperature:</strong> -2.04&deg;C</p>
+                <p><strong>Weather:</strong> Clear sky</p>
+                <p><strong>Humidity:</strong> 90%</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="map1"></div>
+
+
 
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script>
+
+const burger = document.getElementById('burger');
+    const sidebar = document.getElementById('sidebar');
+    const map1 = document.getElementById('map1');
+
+    burger.addEventListener('click', () => {
+        sidebar.classList.toggle('closed');
+        map1.classList.toggle('open');
+    });
+
+
 // Function to convert JSON to GeoJSON
 function convertToGeoJSON(data) {
     const geoJSON = {
@@ -36,12 +226,12 @@ function convertToGeoJSON(data) {
             }
         ]
     };
-   
+
     data.path.forEach(point => {
         const [timestamp, latitude, longitude, altitude, heading, onGround] = point;
         geoJSON.features[0].geometry.coordinates.push([longitude, latitude]);
     });
- 
+
     return geoJSON;
 }
 
@@ -53,11 +243,11 @@ function getQueryParam(param) {
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibGV2ZWw5bmluZSIsImEiOiJjbHgxMGliczUwNzBkMmlxcHY5eGl3NXVuIn0.U42ZWqijRx_UDu-ciiBZmw';
 const map = new mapboxgl.Map({
-    container: 'map',
+    container: 'map1',
     style: 'mapbox://styles/level9nine/clxdqm3b8001j01pc3ekp0phz',
     projection: 'globe',
-    bearing: 0, // Start with no rotation
-    pitch: 10, // Tilt the view to simulate a globe
+    bearing: 0,
+    pitch: 10,
 });
 
 // Get 'icao24' parameter from URL
@@ -75,8 +265,8 @@ if (icao24) {
             // Fetch the JSON data
             d3.json(`/track?icao24=${icao24}`, (err, data) => {
 
-                 // Check if an error is a 500, indicating the flight has landed
-                 if (err && err.status === 500) {
+                // Check if an error is a 500, indicating the flight has landed
+                if (err && err.status === 500) {
                     // Stop further updates
                     clearInterval(updateMapData);
 
@@ -158,7 +348,6 @@ if (icao24) {
                     });
                 }
 
-
                 // If it's the first load, set the initial center and zoom to the endpoint
                 if (firstLoad) {
                     map.flyTo({
@@ -170,8 +359,6 @@ if (icao24) {
                     });
                     firstLoad = false; // Set flag to false after the initial load
                 }
-                 
-
 
             });
         }
@@ -180,7 +367,7 @@ if (icao24) {
         updateMapData();
 
         // Update data every 5 seconds
-        setInterval(updateMapData, 50000);
+        setInterval(updateMapData, 3000);
     });
 } else {
     // Show an alert if icao24 is missing

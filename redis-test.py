@@ -3,13 +3,24 @@ import requests
 import redis
 import threading
 import time
+from google.cloud import bigquery
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
 
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the variable
+credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+print(f"Using credentials from: {credentials_path}")
+
+# redis-14349.c11.us-east-1-2.ec2.redns.redis-cloud.com:14349
 # Configure Redis connection
-redis_host = 'redis-15352.c244.us-east-1-2.ec2.redns.redis-cloud.com'
-redis_port = 15352
-redis_password = 'etA7qlzgGJiCSIdXxrQ9rTuR8ILnluvF'
+redis_host = 'redis-19861.c278.us-east-1-4.ec2.redns.redis-cloud.com'
+redis_port = 19861
+redis_password = 'vwTQ74vjYwsFj0HsFyaTmlTYCs7jJAKN'
 
 redis_client = redis.StrictRedis(
     host=redis_host,
@@ -18,16 +29,22 @@ redis_client = redis.StrictRedis(
     decode_responses=True
 )
 
+
+
 EUROPE_AREA = {
-    "lamin": -90.0,  # Minimum latitude
-    "lomin": -180.0, # Minimum longitude
-    "lamax": 90.0,   # Maximum latitude
-    "lomax": 180.0   # Maximum longitude
+   "lamin": 47.270111,  
+  "lomin": 5.866342,   
+  "lamax": 55.058347,  
+  "lomax": 15.041896   
 }
 
 def fetch_and_store_flights():
-    username = 'level9nine'
-    password = 'supermanLol796#1'
+    username = 'likeaman21'
+    password = 'mardhotoayesa21#'
+
+    headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+    }
 
     while True:
         try:
@@ -37,8 +54,10 @@ def fetch_and_store_flights():
                 'lomin': EUROPE_AREA['lomin'],
                 'lamax': EUROPE_AREA['lamax'],
                 'lomax': EUROPE_AREA['lomax']
-            }, auth=(username, password))  # Adding basic auth
-            
+            }, 
+            auth=(username, password),  # Adding basic auth
+            headers=headers
+            )
             response.raise_for_status()  # Raise an error for bad responses
             flights = response.json().get('states', [])
 
@@ -80,8 +99,10 @@ def fetch_and_store_flights():
 
         except requests.exceptions.RequestException as e:
             print(f"Error fetching flights: {str(e)}")
+            time.sleep(300)  
         except Exception as e:
             print(f"An error occurred: {str(e)}")
+            time.sleep(300)  
 
 # Start the background thread
 threading.Thread(target=fetch_and_store_flights, daemon=True).start()
@@ -122,7 +143,53 @@ def get_flights_to_frankfurt():
         return jsonify(all_flight_data), 200
 
     except Exception as e:
-        return jsonify({"error": f"Error fetching flight data: {str(e)}"}), 500
+        return jsonify({"error": f"Error fetching flight data: {str(e)}"}), 300000
+
+# Endpoint to handle flight query
+@app.route('/makeprediction', methods=['POST'])
+def query():
+    try:
+        data = request.get_json()
+        flight_number = data.get('flightNumber')
+        airline_name = data.get('airlineName')
+
+        if not flight_number or not airline_name:
+            return jsonify({"message": "Flight number and airline name are required!"}), 400
+
+        # Initialize BigQuery client
+        client = bigquery.Client()
+
+        # BigQuery query
+        query = f"""
+        SELECT
+        predicted_is_delayed -- Predicted label (0 or 1)
+        FROM
+        ML.PREDICT(MODEL `flightmodelfra.fra_arr.flight_delay_model`,
+        (
+        SELECT
+        airline_name,
+        flight_number,
+        arrival_hour,
+        arrival_dayofweek,
+        avg_delay
+        FROM `flightmodelfra.fra_arr.cleaned_flight_data_with_avg`
+        )) WHERE flight_number = {flight_number} AND airline_name = '{airline_name}' LIMIT 1;
+        """
+        
+        # Execute the query
+        query_job = client.query(query)
+        results = query_job.result()
+
+        # Convert results to JSON
+        rows = [dict(row) for row in results]
+
+        if not rows:
+            return jsonify({"message": "No data found for the provided flight number and airline name."})
+
+        return jsonify({"message": rows})
+
+    except Exception as e:
+        return jsonify({"message": str(e)}), 500
 
 @app.route('/all')
 def index2():
@@ -138,7 +205,11 @@ def index4():
 
 @app.route('/live-route-weather')
 def index5():
-    return render_template('live-route-weather.html') 
+    return render_template('live-weather.html') 
+
+@app.route('/predict')
+def index6():
+    return render_template('historical_data.html') 
 
 
 if __name__ == '__main__':
