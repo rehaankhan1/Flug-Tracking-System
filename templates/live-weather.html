@@ -147,22 +147,22 @@
 
     <button id="burger">☰</button>
     <div id="sidebar">
-        <div class="flight-logo" style="position: relative; margin-left: 85px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/KLM_logo.svg/1200px-KLM_logo.svg.png">
+        <div class="flight-logo" style="position: relative; margin-left: 110px;">
+            <img src="../static/project_logo.png">
         </div>
         <div class="flight-info" style=" border-top: 1px solid #ddd;text-align: center;">
-            <h1>KLM Dutch Airlines 810</h1>
+            <h1 class="airline_name">KLM Dutch Airlines 810</h1>
             </div>
             <div class="flight-info" style=" border-top: 1px solid #ddd;text-align: center;padding-top: 0px;margin-bottom: 25px;">
-            <p class="status" style="font-size: 30px;">EN ROUTE</p>
-            <p>Arriving in 39 minutes</p>
+            <p class="status" style="font-size: 30px;">Loading...</p>
+            <p class="arrival_diff">Arriving in 39 minutes</p>
         </div>
     
         <div class="details">
             <div class="location">
-                <h2>KUL</h2>
-                <p>Sepang, Malaysia</p>
-                <p>Saturday 18-Jan-2025 11:53 PM</p>
+                <h2 class="departure_iata">KUL</h2>
+                <p class="departure_city">Sepang, Malaysia</p>
+                <p class="departure_time">Saturday 18-Jan-2025 11:53 PM</p>
             </div>
     
             <div class="timeline">
@@ -170,23 +170,23 @@
                     <div class="elapsed"></div>
                 </div>
                 <div class="labels">
-                    <span>12h 17m elapsed</span>
-                    <span>12h 57m total travel time</span>
+                    <span class="elapsed_time">12h 17m elapsed</span>
+                    <span class="total_time_diff">12h 57m total travel time</span>
                 </div>
             </div>
     
             <div class="location" style="position: relative;top: 28px;">
-                <h2>AMS</h2>
-                <p>Amsterdam, Netherlands</p>
-                <p>Sunday 19-Jan-2025 05:50 AM</p>
+                <h2 class="arrival_iata">AMS</h2>
+                <p class="arrival_city">Amsterdam, Netherlands</p>
+                <p class="arrival_time">Sunday 19-Jan-2025 05:50 AM</p>
             </div>
             </div>
             <div class="details" style="position: relative;margin-top:10px;">
             <div class="weather" style="position: relative;margin-bottom: 30px;">
                 <h2>Weather Details</h2>
-                <p><strong>Temperature:</strong> -2.04&deg;C</p>
-                <p><strong>Weather:</strong> Clear sky</p>
-                <p><strong>Humidity:</strong> 90%</p>
+                <p class="temperature"> -2.04&deg;C</p>
+                <p class="weather1"><strong>Weather:</strong> Clear sky</p>
+                <p class="humidity"><strong>Humidity:</strong> 90%</p>
             </div>
         </div>
     </div>
@@ -197,6 +197,140 @@
 
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script>
+
+
+
+function calculateArrivalTime(utcTimeString) {
+            // Parse the UTC time string
+            const utcTime = new Date(utcTimeString);
+            
+            // Get the current time in UTC
+            const currentTime = new Date();
+
+            // Calculate the time difference in milliseconds
+            const diffMs = utcTime - currentTime;
+
+            // Convert milliseconds to hours and minutes
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+            const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+            // Generate the appropriate string
+            let arrivalMessage = "";
+            if (diffHours > 0) {
+                arrivalMessage = `Arriving in ${diffHours} hours`;
+            } else if (diffMinutes > 0) {
+                arrivalMessage = `Arriving in ${diffMinutes} minutes`;
+            } else {
+                arrivalMessage = "Already arrived";
+            }
+
+            return arrivalMessage;
+}
+
+function convertDateString(dateString) {
+    // Parse the input string into a Date object
+    const date = new Date(dateString);
+
+    // Format options for the desired output
+    const options = { 
+        day: '2-digit', 
+        month: 'long', 
+        year: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit', 
+        hour12: false
+    };
+
+    // Convert to desired format
+    return date.toLocaleDateString('en-GB', options).replace(',', '');
+}
+
+function calculateElapsedTime(utcTimeString) {
+    // Parse the input UTC time string into a Date object
+    const pastTime = new Date(utcTimeString);
+
+    // Get the current time in UTC
+    const currentTime = new Date();
+
+    // Calculate the time difference in milliseconds
+    const diffMs = currentTime - pastTime;
+
+    // Convert milliseconds to hours and minutes
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    // Generate the elapsed time string
+    if (diffHours < 1) {
+        return `${diffMinutes}m elapsed`;
+    } else {
+        return `${diffHours}h ${diffMinutes}m elapsed`;
+    }
+}
+
+function totalTimeDifference(utcTime1, utcTime2) {
+    // Parse the input UTC time strings into Date objects
+    const time1 = new Date(utcTime1);
+    const time2 = new Date(utcTime2);
+
+    // Calculate the time difference in milliseconds
+    const diffMs = Math.abs(time2 - time1); // Use absolute value to avoid negative differences
+
+    // Convert milliseconds to hours and minutes
+    const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    // Generate the difference time string
+    if (diffHours < 1) {
+        return `${diffMinutes}m total travel time`;
+    } else {
+        return `${diffHours}h ${diffMinutes}m total travel time`;
+    }
+}
+
+
+
+            function getFlightDetails() {
+            d3.json(`/getFlightData?flightNum=${flightNum}`, (err, data) => {
+            if (err) {
+            console.error("Error fetching flight data:", err);
+            return;
+            }
+            
+            // FLIGHT STATUS
+            document.querySelector('.status').textContent=data[0].status.toUpperCase();
+
+            // ARRIVAL DETAILS
+            let arrivalName = data[0].arrival.airport.name + ", " + data[0].arrival.airport.countryCode;
+            document.querySelector('.arrival_city').textContent=arrivalName;
+            document.querySelector('.arrival_iata').textContent=data[0].arrival.airport.iata;
+            document.querySelector('.arrival_time').textContent=convertDateString(data[0].arrival.scheduledTime.local);
+        
+            // DEPARTURE DETAILS
+            let departureName = data[0].departure.airport.name + ", "+ data[0].departure.airport.countryCode;
+            document.querySelector('.departure_city').textContent=departureName;
+            document.querySelector('.departure_iata').textContent=data[0].departure.airport.iata;
+            document.querySelector('.departure_time').textContent=convertDateString(data[0].departure.runwayTime.local);
+
+            //AIRLINE NAME
+            document.querySelector('.airline_name').textContent=data[0].airline.name + " Airlines";
+
+            //CALCULATING ARRIVAL TIME
+            document.querySelector('.arrival_diff').textContent=calculateArrivalTime(data[0].arrival.scheduledTime.utc)
+
+            //CALCULATE ELAPSED TIME
+            document.querySelector('.elapsed_time').textContent=calculateElapsedTime(data[0].departure.runwayTime.utc);
+            document.querySelector('.total_time_diff').textContent=totalTimeDifference(data[0].departure.runwayTime.utc, data[0].arrival.scheduledTime.utc);
+
+            //UPDATING WEATHER
+            document.querySelector('.temperature').innerHTML = "<strong>Temperature:</strong> " + getQueryParam('temperature') + "°C";
+            document.querySelector('.weather1').innerHTML= "<strong>Weather:</strong> " + getQueryParam('weatherDescription');
+            document.querySelector('.humidity').innerHTML="<strong>Humidity:</strong> " + getQueryParam('humidity') + "%";
+
+            })
+            }
+
+           
+
 
 const burger = document.getElementById('burger');
     const sidebar = document.getElementById('sidebar');
@@ -252,14 +386,17 @@ const map = new mapboxgl.Map({
 
 // Get 'icao24' parameter from URL
 const icao24 = getQueryParam('icao24');
+const flightNum = getQueryParam('flightNum')
 
 let firstLoad = true; // Flag to check if it's the first load
-
+getFlightDetails();
 if (icao24) {
     map.on('load', () => {
 
         // Enable zoom and pan controls for user interaction
         map.addControl(new mapboxgl.NavigationControl());
+
+        
 
         function updateMapData() {
             // Fetch the JSON data
@@ -365,9 +502,10 @@ if (icao24) {
 
         // Initial data load
         updateMapData();
+       
 
         // Update data every 5 seconds
-        setInterval(updateMapData, 3000);
+        setInterval(updateMapData, 30000);
     });
 } else {
     // Show an alert if icao24 is missing

@@ -12,6 +12,10 @@ app = Flask(__name__)
 # Load environment variables from .env file
 load_dotenv()
 
+#aerodatabox API https://api.market/store/aedbx/aerodatabox
+API_KEY = "cm62zddhp0002l5031daxspwm"
+BASE_URL = "https://api.magicapi.dev/api/v1/aedbx/aerodatabox/flights/Number/"
+
 # Access the variable
 credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 print(f"Using credentials from: {credentials_path}")
@@ -107,6 +111,8 @@ def fetch_and_store_flights():
 # Start the background thread
 threading.Thread(target=fetch_and_store_flights, daemon=True).start()
 
+
+
 @app.route('/track', methods=['GET'])
 def get_track():
     # Get the icao24 parameter from the user
@@ -190,6 +196,35 @@ def query():
 
     except Exception as e:
         return jsonify({"message": str(e)}), 500
+
+
+@app.route('/getFlightData', methods=['GET'])
+def get_flight_data():
+    try:
+        # Get flightNum from the URL parameter
+        flight_num = request.args.get('flightNum')
+        if not flight_num:
+            return jsonify({"error": "Missing flightNum parameter"}), 400
+
+        # Construct the API endpoint URL
+        api_url = f"{BASE_URL}{flight_num}?withAircraftImage=false&withLocation=false"
+
+        # Make the API request
+        headers = {
+            "x-magicapi-key": API_KEY
+        }
+        response = requests.get(api_url, headers=headers)
+
+        # Check the response status
+        if response.status_code == 200:
+            # Return the JSON response from the API
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch flight data", "details": response.text}), response.status_code
+
+    except Exception as e:
+        return jsonify({"error": "An error occurred", "details": str(e)}), 500
+
 
 @app.route('/all')
 def index2():

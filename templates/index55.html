@@ -252,7 +252,7 @@ function drawRoute(index, origin, destination, flight) {
         </div>
         <!-- Add the link at the bottom -->
         <div style="position: absolute; bottom: 10px; left: 15px;">
-            <a href="http://127.0.0.1:5000/live-route-weather?icao24=${flightInfo.ICAO24}" target="_blank" style="
+            <a href="http://127.0.0.1:5000/live-route-weather?icao24=${flightInfo.ICAO24}&destination=${flightInfo.Destination}&flightNum=${flightInfo.Flight}&temperature=${weatherData.main.temp}&weatherDescription=${weatherData.weather[0].description}&weathericon=${weatherData.weather[0].icon}&humidity=${weatherData.main.humidity}" target="_blank" style="
                 color: #ffd700; 
                 text-decoration: none; 
                 font-weight: bold; 
