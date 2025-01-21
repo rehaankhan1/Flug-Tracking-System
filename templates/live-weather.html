@@ -153,6 +153,9 @@
         <div class="flight-info" style=" border-top: 1px solid #ddd;text-align: center;">
             <h1 class="airline_name">KLM Dutch Airlines 810</h1>
             </div>
+            <div class="flight-info" style=" border-top: 1px solid #ddd;text-align: center;">
+                <h1 class="flight_name"></h1>
+                </div>
             <div class="flight-info" style=" border-top: 1px solid #ddd;text-align: center;padding-top: 0px;margin-bottom: 25px;">
             <p class="status" style="font-size: 30px;">Loading...</p>
             <p class="arrival_diff">Arriving in 39 minutes</p>
@@ -246,14 +249,31 @@ function convertDateString(dateString) {
 }
 
 function calculateElapsedTime(utcTimeString) {
-    // Parse the input UTC time string into a Date object
+    // Replace space with 'T' if necessary to ensure ISO 8601 compliance
+    if (utcTimeString.includes(" ")) {
+        utcTimeString = utcTimeString.replace(" ", "T");
+    }
+
+    // Ensure the input is in a valid ISO 8601 format
     const pastTime = new Date(utcTimeString);
 
-    // Get the current time in UTC
+    if (isNaN(pastTime.getTime())) {
+        console.error("Invalid UTC time string:", utcTimeString);
+        throw new Error("Invalid UTC time string");
+    }
+
+    // Log the parsed pastTime
+    console.log("Parsed pastTime:", pastTime);
+
+    // Get the current UTC time
     const currentTime = new Date();
+    console.log("Current time:", currentTime);
 
     // Calculate the time difference in milliseconds
-    const diffMs = currentTime - pastTime;
+    const diffMs = currentTime.getTime() - pastTime.getTime();
+
+    // Log the time difference in milliseconds
+    console.log("Time difference (ms):", diffMs);
 
     // Convert milliseconds to hours and minutes
     const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
@@ -266,6 +286,7 @@ function calculateElapsedTime(utcTimeString) {
         return `${diffHours}h ${diffMinutes}m elapsed`;
     }
 }
+
 
 function totalTimeDifference(utcTime1, utcTime2) {
     // Parse the input UTC time strings into Date objects
@@ -290,36 +311,73 @@ function totalTimeDifference(utcTime1, utcTime2) {
 
 
             function getFlightDetails() {
-            d3.json(`/getFlightData?flightNum=${flightNum}`, (err, data) => {
+            d3.json(`/getFlightData?flightNum=${icao24}`, (err, data) => {
             if (err) {
             console.error("Error fetching flight data:", err);
             return;
             }
             
-            // FLIGHT STATUS
-            document.querySelector('.status').textContent=data[0].status.toUpperCase();
+    let selectedData;
+    for(let i=10;i>=0;i--){
+        if(data[i]){
+            selectedData = data[i];
+            break;
+        }
+    }
+    // else if (data[2]) {
+    //     selectedData = data[2];
+    // } else if (data[1]) {
+    //     selectedData = data[1];
+    // } else {
+    //     selectedData = data[0];
+    //     return;
+    // }
+    console.log(selectedData)
+           
 
+            // FLIGHT STATUS
+            document.querySelector('.status').textContent=selectedData.status.toUpperCase();
+            document.querySelector('.flight_name').textContent=flightNum;
+           
             // ARRIVAL DETAILS
-            let arrivalName = data[0].arrival.airport.name + ", " + data[0].arrival.airport.countryCode;
+            let arrivalName = selectedData.arrival.airport.name + ", " + selectedData.arrival.airport.countryCode;
             document.querySelector('.arrival_city').textContent=arrivalName;
-            document.querySelector('.arrival_iata').textContent=data[0].arrival.airport.iata;
-            document.querySelector('.arrival_time').textContent=convertDateString(data[0].arrival.scheduledTime.local);
+            document.querySelector('.arrival_iata').textContent=selectedData.arrival.airport.iata;
+            const arrivalTime = selectedData?.arrival?.scheduledTime?.local || 
+                    selectedData?.arrival?.predictedTime?.local || 
+                    selectedData?.arrival?.revisedTime?.local || 
+                    selectedData?.arrival?.runwayTime?.local;
+            document.querySelector('.arrival_time').textContent=convertDateString(arrivalTime);
         
             // DEPARTURE DETAILS
-            let departureName = data[0].departure.airport.name + ", "+ data[0].departure.airport.countryCode;
+            let departureName = selectedData.departure.airport.name + ", "+ selectedData.departure.airport.countryCode;
             document.querySelector('.departure_city').textContent=departureName;
-            document.querySelector('.departure_iata').textContent=data[0].departure.airport.iata;
-            document.querySelector('.departure_time').textContent=convertDateString(data[0].departure.runwayTime.local);
+            document.querySelector('.departure_iata').textContent=selectedData.departure.airport.iata;
+            const departureTime = selectedData?.departure?.scheduledTime?.local || 
+                    selectedData?.departure?.predictedTime?.local || 
+                    selectedData?.departure?.revisedTime?.local || 
+                    selectedData?.departure?.runwayTime?.local;
+            document.querySelector('.departure_time').textContent=convertDateString(departureTime);
 
             //AIRLINE NAME
-            document.querySelector('.airline_name').textContent=data[0].airline.name + " Airlines";
+            document.querySelector('.airline_name').textContent=selectedData.airline.name + " Airlines";
 
             //CALCULATING ARRIVAL TIME
-            document.querySelector('.arrival_diff').textContent=calculateArrivalTime(data[0].arrival.scheduledTime.utc)
+            const arrivalTimeUTC = selectedData?.arrival?.scheduledTime?.utc || 
+                    selectedData?.arrival?.predictedTime?.utc || 
+                    selectedData?.arrival?.revisedTime?.utc || 
+                    selectedData?.arrival?.runwayTime?.utc;
+            document.querySelector('.arrival_diff').textContent=calculateArrivalTime(arrivalTimeUTC)
 
             //CALCULATE ELAPSED TIME
-            document.querySelector('.elapsed_time').textContent=calculateElapsedTime(data[0].departure.runwayTime.utc);
-            document.querySelector('.total_time_diff').textContent=totalTimeDifference(data[0].departure.runwayTime.utc, data[0].arrival.scheduledTime.utc);
+            const departureTimeUTC = selectedData?.departure?.scheduledTime?.utc || 
+                    selectedData?.departure?.predictedTime?.utc || 
+                    selectedData?.departure?.revisedTime?.utc || 
+                    selectedData?.departure?.runwayTime?.utc;
+            console.log(departureTimeUTC);
+            console.log(calculateElapsedTime(departureTimeUTC));
+            document.querySelector('.elapsed_time').textContent=calculateElapsedTime(departureTimeUTC);
+            document.querySelector('.total_time_diff').textContent=totalTimeDifference(departureTimeUTC, arrivalTimeUTC);
 
             //UPDATING WEATHER
             document.querySelector('.temperature').innerHTML = "<strong>Temperature:</strong> " + getQueryParam('temperature') + "°C";
@@ -335,6 +393,11 @@ function totalTimeDifference(utcTime1, utcTime2) {
 const burger = document.getElementById('burger');
     const sidebar = document.getElementById('sidebar');
     const map1 = document.getElementById('map1');
+    sidebar.classList.toggle('closed');
+setTimeout(() => {
+    sidebar.classList.toggle('closed');
+    console.log('Sidebar toggled');
+}, 6000);
 
     burger.addEventListener('click', () => {
         sidebar.classList.toggle('closed');
@@ -388,8 +451,10 @@ const map = new mapboxgl.Map({
 const icao24 = getQueryParam('icao24');
 const flightNum = getQueryParam('flightNum')
 
+
+
 let firstLoad = true; // Flag to check if it's the first load
-getFlightDetails();
+
 if (icao24) {
     map.on('load', () => {
 
@@ -502,7 +567,7 @@ if (icao24) {
 
         // Initial data load
         updateMapData();
-       
+        getFlightDetails();
 
         // Update data every 5 seconds
         setInterval(updateMapData, 30000);

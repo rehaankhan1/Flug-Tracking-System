@@ -14,7 +14,7 @@ load_dotenv()
 
 #aerodatabox API https://api.market/store/aedbx/aerodatabox
 API_KEY = "cm62zddhp0002l5031daxspwm"
-BASE_URL = "https://api.magicapi.dev/api/v1/aedbx/aerodatabox/flights/Number/"
+BASE_URL = "https://api.magicapi.dev/api/v1/aedbx/aerodatabox/flights/Icao24/"
 
 # Access the variable
 credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
@@ -36,10 +36,10 @@ redis_client = redis.StrictRedis(
 
 
 EUROPE_AREA = {
-   "lamin": 47.270111,  
-  "lomin": 5.866342,   
-  "lamax": 55.058347,  
-  "lomax": 15.041896   
+  "lamin": 35.0,       
+  "lomin": -10.0,      
+  "lamax": 71.0,       
+  "lomax": 40.0          
 }
 
 def fetch_and_store_flights():
