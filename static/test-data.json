@@ -1,0 +1,4202 @@
+[
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR9KF",
+    "Heading": "271.94\u00b0",
+    "ICAO24": "4b1816",
+    "Speed": "197.66 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.3756,
+    "longitude": 7.7917
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR9QY",
+    "Heading": "309.38\u00b0",
+    "ICAO24": "4b1818",
+    "Speed": "5.4 m/s",
+    "Time-pos": 1737651759,
+    "latitude": 47.4498,
+    "longitude": 8.5576
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR101X",
+    "Heading": "185.62\u00b0",
+    "ICAO24": "4b1804",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651759,
+    "latitude": 47.4543,
+    "longitude": 8.5569
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR2ME",
+    "Heading": "141.03\u00b0",
+    "ICAO24": "4b1805",
+    "Speed": "103.88 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.586,
+    "longitude": 8.399
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR143B",
+    "Heading": "210.09\u00b0",
+    "ICAO24": "4b1806",
+    "Speed": "190.86 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.6995,
+    "longitude": 7.7182
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR3CH",
+    "Heading": "192.83\u00b0",
+    "ICAO24": "4b1807",
+    "Speed": "213.16 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.335,
+    "longitude": 9.2522
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "TAP69D",
+    "Heading": "64.69\u00b0",
+    "ICAO24": "4952ca",
+    "Speed": "9.77 m/s",
+    "Time-pos": 1737651545,
+    "latitude": 49.6284,
+    "longitude": 6.2086
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DEEPH",
+    "Heading": "252.26\u00b0",
+    "ICAO24": "3d10c5",
+    "Speed": "54.01 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.4559,
+    "longitude": 11.0688
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "EJU61AP",
+    "Heading": "340.31\u00b0",
+    "ICAO24": "440daf",
+    "Speed": "6.43 m/s",
+    "Time-pos": 1737651481,
+    "latitude": 52.36,
+    "longitude": 13.5068
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "TAP33MH",
+    "Heading": "248.74\u00b0",
+    "ICAO24": "4952c4",
+    "Speed": "201.48 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.527,
+    "longitude": 9.7241
+  },
+  {
+    "Destination": "Estonia",
+    "Flight": "MBU3SD",
+    "Heading": "215.93\u00b0",
+    "ICAO24": "511187",
+    "Speed": "212.19 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.4137,
+    "longitude": 7.5498
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "HBJFQ",
+    "Heading": "288.88\u00b0",
+    "ICAO24": "4b1856",
+    "Speed": "208.24 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.7556,
+    "longitude": 5.9159
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "PGT20NG",
+    "Heading": "118.42\u00b0",
+    "ICAO24": "4bc8c4",
+    "Speed": "248.6 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.2469,
+    "longitude": 12.3732
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH4AR",
+    "Heading": "155.5\u00b0",
+    "ICAO24": "3c6664",
+    "Speed": "217.09 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.3021,
+    "longitude": 11.9176
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH5N",
+    "Heading": "249.58\u00b0",
+    "ICAO24": "3c6662",
+    "Speed": "75.2 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.4252,
+    "longitude": 13.73
+  },
+  {
+    "Destination": "Estonia",
+    "Flight": "MBU5NH",
+    "Heading": "285.88\u00b0",
+    "ICAO24": "511171",
+    "Speed": "116.6 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.0306,
+    "longitude": 7.1471
+  },
+  {
+    "Destination": "Denmark",
+    "Flight": "OYTWM",
+    "Heading": "7.7\u00b0",
+    "ICAO24": "45d2ed",
+    "Speed": "145.87 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 54.2473,
+    "longitude": 11.2396
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR52",
+    "Heading": "275.26\u00b0",
+    "ICAO24": "4b1885",
+    "Speed": "157.05 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.4099,
+    "longitude": 8.2045
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR18P",
+    "Heading": "334.69\u00b0",
+    "ICAO24": "4b1880",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651760,
+    "latitude": 47.4754,
+    "longitude": 8.5391
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG1TA",
+    "Heading": "7.05\u00b0",
+    "ICAO24": "3c5ee9",
+    "Speed": "230.67 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.7733,
+    "longitude": 9.7968
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH2WR",
+    "Heading": "177.19\u00b0",
+    "ICAO24": "3c65c7",
+    "Speed": "6.94 m/s",
+    "Time-pos": 1737651542,
+    "latitude": 53.6332,
+    "longitude": 10.0023
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH7H",
+    "Heading": "303.75\u00b0",
+    "ICAO24": "3c65c5",
+    "Speed": "7.46 m/s",
+    "Time-pos": 1737651626,
+    "latitude": 50.0484,
+    "longitude": 8.5934
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG2LF",
+    "Heading": "212.5\u00b0",
+    "ICAO24": "3c5ee1",
+    "Speed": "213.5 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.6216,
+    "longitude": 11.3497
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG16W",
+    "Heading": "307.8\u00b0",
+    "ICAO24": "3c5ef8",
+    "Speed": "101.56 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.7094,
+    "longitude": 9.9216
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG6ZL",
+    "Heading": "317.81\u00b0",
+    "ICAO24": "3c5ef6",
+    "Speed": "2.57 m/s",
+    "Time-pos": 1737651761,
+    "latitude": 48.6882,
+    "longitude": 9.1938
+  },
+  {
+    "Destination": "Greece",
+    "Flight": "AEE510",
+    "Heading": "289.78\u00b0",
+    "ICAO24": "46b82d",
+    "Speed": "214.31 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.2694,
+    "longitude": 11.6494
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG7NH",
+    "Heading": "83.62\u00b0",
+    "ICAO24": "3c5eec",
+    "Speed": "162.02 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.4397,
+    "longitude": 11.6535
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG2YH",
+    "Heading": "219.73\u00b0",
+    "ICAO24": "3c5eea",
+    "Speed": "202.02 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.5474,
+    "longitude": 7.2575
+  },
+  {
+    "Destination": "United States",
+    "Flight": "SALTY15",
+    "Heading": "179.19\u00b0",
+    "ICAO24": "ae74ea",
+    "Speed": "36.53 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.0012,
+    "longitude": 10.0231
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG8AG",
+    "Heading": "252.29\u00b0",
+    "ICAO24": "3c5ef0",
+    "Speed": "103.15 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.0507,
+    "longitude": 6.9876
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N6CP",
+    "Heading": "342.31\u00b0",
+    "ICAO24": "a7c2cd",
+    "Speed": "262.43 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.4363,
+    "longitude": 8.8859
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH3CF",
+    "Heading": "193.47\u00b0",
+    "ICAO24": "3c65ca",
+    "Speed": "203.14 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.7199,
+    "longitude": 10.0478
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA215J",
+    "Heading": "287.94\u00b0",
+    "ICAO24": "44022d",
+    "Speed": "187.09 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.8656,
+    "longitude": 11.5282
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "NSZ2940",
+    "Heading": "196.3\u00b0",
+    "ICAO24": "4aca89",
+    "Speed": "218.14 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.632,
+    "longitude": 13.4424
+  },
+  {
+    "Destination": "Hungary",
+    "Flight": "WZZ997",
+    "Heading": "104.26\u00b0",
+    "ICAO24": "471f8f",
+    "Speed": "256.91 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.6723,
+    "longitude": 7.9409
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM7901",
+    "Heading": "266.58\u00b0",
+    "ICAO24": "485991",
+    "Speed": "60.3 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.2148,
+    "longitude": 6.9686
+  },
+  {
+    "Destination": "United States",
+    "Flight": "COVET15",
+    "Heading": "256.16\u00b0",
+    "ICAO24": "ae74c3",
+    "Speed": "36.56 m/s",
+    "Time-pos": 1737651761,
+    "latitude": 49.384,
+    "longitude": 10.5691
+  },
+  {
+    "Destination": "Hungary",
+    "Flight": "WMT437",
+    "Heading": "239.34\u00b0",
+    "ICAO24": "471f6c",
+    "Speed": "67.58 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.9931,
+    "longitude": 10.2502
+  },
+  {
+    "Destination": "Spain",
+    "Flight": "IBS1805",
+    "Heading": "62.32\u00b0",
+    "ICAO24": "344455",
+    "Speed": "259.1 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.3255,
+    "longitude": 7.9316
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH5YY",
+    "Heading": "230.67\u00b0",
+    "ICAO24": "3c6749",
+    "Speed": "191.55 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.3431,
+    "longitude": 11.2185
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH194",
+    "Heading": "119.23\u00b0",
+    "ICAO24": "3c6748",
+    "Speed": "163.29 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.8538,
+    "longitude": 8.8396
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH3FR",
+    "Heading": "232.66\u00b0",
+    "ICAO24": "3c6741",
+    "Speed": "62.76 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.2869,
+    "longitude": 6.7673
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "JFL605",
+    "Heading": "102.29\u00b0",
+    "ICAO24": "4400b0",
+    "Speed": "224.82 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.5691,
+    "longitude": 11.3883
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "BCS997",
+    "Heading": "268.77\u00b0",
+    "ICAO24": "3c5428",
+    "Speed": "119.38 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.4356,
+    "longitude": 12.7444
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH3TP",
+    "Heading": "265.15\u00b0",
+    "ICAO24": "3c674a",
+    "Speed": "109.45 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.3906,
+    "longitude": 12.1274
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH6JW",
+    "Heading": "264.58\u00b0",
+    "ICAO24": "3c675a",
+    "Speed": "70.8 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.3505,
+    "longitude": 11.879
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH939",
+    "Heading": "84.38\u00b0",
+    "ICAO24": "3c674d",
+    "Speed": "12.35 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.0441,
+    "longitude": 8.5367
+  },
+  {
+    "Destination": "Spain",
+    "Flight": "IBS1823",
+    "Heading": "42.42\u00b0",
+    "ICAO24": "344416",
+    "Speed": "250.89 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.6084,
+    "longitude": 7.0364
+  },
+  {
+    "Destination": "Hungary",
+    "Flight": "WMT841",
+    "Heading": "106.69\u00b0",
+    "ICAO24": "471f03",
+    "Speed": "245.44 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.3065,
+    "longitude": 14.5622
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "TAP1242",
+    "Heading": "244.65\u00b0",
+    "ICAO24": "4951ce",
+    "Speed": "64.89 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.1257,
+    "longitude": 14.3061
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DELKD",
+    "Heading": "321.07\u00b0",
+    "ICAO24": "3d22bb",
+    "Speed": "51.58 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.3654,
+    "longitude": 13.9387
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH4CX",
+    "Heading": "213.75\u00b0",
+    "ICAO24": "3c6584",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651672,
+    "latitude": 50.1073,
+    "longitude": 14.2629
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH6RL",
+    "Heading": "222.98\u00b0",
+    "ICAO24": "3c6581",
+    "Speed": "175.08 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.0466,
+    "longitude": 12.9079
+  },
+  {
+    "Destination": "India",
+    "Flight": "IGO9001",
+    "Heading": "315\u00b0",
+    "ICAO24": "80175a",
+    "Speed": "3.86 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.5325,
+    "longitude": 9.8344
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH9EE",
+    "Heading": "137.2\u00b0",
+    "ICAO24": "3c6597",
+    "Speed": "246.09 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.5381,
+    "longitude": 8.0492
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA214",
+    "Heading": "85.47\u00b0",
+    "ICAO24": "4402a3",
+    "Speed": "253.9 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.455,
+    "longitude": 14.0428
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CFG6MC",
+    "Heading": "14.19\u00b0",
+    "ICAO24": "3c7879",
+    "Speed": "237.19 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.9397,
+    "longitude": 12.9062
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH729",
+    "Heading": "287.25\u00b0",
+    "ICAO24": "3c4b30",
+    "Speed": "227.31 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.8034,
+    "longitude": 11.8485
+  },
+  {
+    "Destination": "Spain",
+    "Flight": "VOE4HV",
+    "Heading": "228.55\u00b0",
+    "ICAO24": "3430cd",
+    "Speed": "105.7 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.6506,
+    "longitude": 7.8213
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH5HH",
+    "Heading": "278.48\u00b0",
+    "ICAO24": "3c654d",
+    "Speed": "202.33 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.3887,
+    "longitude": 8.206
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH717",
+    "Heading": "164.52\u00b0",
+    "ICAO24": "3c4b2a",
+    "Speed": "252.49 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 54.6362,
+    "longitude": 8.7591
+  },
+  {
+    "Destination": "France",
+    "Flight": "AFR18MZ",
+    "Heading": "216.99\u00b0",
+    "ICAO24": "39e687",
+    "Speed": "195.8 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.5115,
+    "longitude": 7.9704
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "LHX2101",
+    "Heading": "171.62\u00b0",
+    "ICAO24": "3c654e",
+    "Speed": "151.84 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.809,
+    "longitude": 12.2257
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "WUK922",
+    "Heading": "157.5\u00b0",
+    "ICAO24": "407b70",
+    "Speed": "48.36 m/s",
+    "Time-pos": 1737651712,
+    "latitude": 47.7915,
+    "longitude": 13.0051
+  },
+  {
+    "Destination": "France",
+    "Flight": "AFR31QV",
+    "Heading": "254.76\u00b0",
+    "ICAO24": "39e697",
+    "Speed": "160.49 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.1959,
+    "longitude": 12.8304
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG2YX",
+    "Heading": "233.44\u00b0",
+    "ICAO24": "3c4b4e",
+    "Speed": "1.03 m/s",
+    "Time-pos": 1737651759,
+    "latitude": 51.2821,
+    "longitude": 6.7638
+  },
+  {
+    "Destination": "Bulgaria",
+    "Flight": "BGH900P",
+    "Heading": "95.07\u00b0",
+    "ICAO24": "451c67",
+    "Speed": "87.28 m/s",
+    "Time-pos": 1737651760,
+    "latitude": 47.483,
+    "longitude": 9.5829
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH04C",
+    "Heading": "265.24\u00b0",
+    "ICAO24": "3c64a8",
+    "Speed": "92.92 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.3595,
+    "longitude": 11.9935
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH2KE",
+    "Heading": "319.75\u00b0",
+    "ICAO24": "3c64ac",
+    "Speed": "210.98 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.7998,
+    "longitude": 9.9512
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "NSZ5324",
+    "Heading": "11.8\u00b0",
+    "ICAO24": "4aca14",
+    "Speed": "236.5 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.2886,
+    "longitude": 10.1672
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "SAS59J",
+    "Heading": "140.62\u00b0",
+    "ICAO24": "4aca69",
+    "Speed": "4.89 m/s",
+    "Time-pos": 1737651747,
+    "latitude": 51.2818,
+    "longitude": 6.7626
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "SAS48D",
+    "Heading": "48.4\u00b0",
+    "ICAO24": "4aca70",
+    "Speed": "245.61 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 53.5124,
+    "longitude": 7.0682
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "SAS71T",
+    "Heading": "175.89\u00b0",
+    "ICAO24": "4aca73",
+    "Speed": "222.3 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.452,
+    "longitude": 13.5461
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "PBB17",
+    "Heading": "321.12\u00b0",
+    "ICAO24": "3dd577",
+    "Speed": "20.49 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.5622,
+    "longitude": 13.6692
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "GNY4357",
+    "Heading": "24.11\u00b0",
+    "ICAO24": "3e8b8e",
+    "Speed": "80.6 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 54.387,
+    "longitude": 8.5992
+  },
+  {
+    "Destination": "Hungary",
+    "Flight": "WZZ31XH",
+    "Heading": "67.9\u00b0",
+    "ICAO24": "471fa0",
+    "Speed": "242.08 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.9767,
+    "longitude": 13.1492
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DETCA",
+    "Heading": "125.45\u00b0",
+    "ICAO24": "3d3708",
+    "Speed": "37.26 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.8447,
+    "longitude": 8.6559
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "NSZ5372",
+    "Heading": "9.63\u00b0",
+    "ICAO24": "4aca50",
+    "Speed": "236.89 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.0975,
+    "longitude": 9.0165
+  },
+  {
+    "Destination": "India",
+    "Flight": "AIC2029",
+    "Heading": "67.5\u00b0",
+    "ICAO24": "8015cd",
+    "Speed": "10.8 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.0402,
+    "longitude": 8.577
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "NJE318F",
+    "Heading": "209.78\u00b0",
+    "ICAO24": "49410b",
+    "Speed": "192.64 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.4176,
+    "longitude": 7.4733
+  },
+  {
+    "Destination": "Romania",
+    "Flight": "ROT363W",
+    "Heading": "297.67\u00b0",
+    "ICAO24": "4a08e7",
+    "Speed": "214.92 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.9554,
+    "longitude": 11.2673
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "NJE5RT",
+    "Heading": "98.62\u00b0",
+    "ICAO24": "494116",
+    "Speed": "68.68 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.4964,
+    "longitude": 9.4573
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "BAW9GM",
+    "Heading": "267.48\u00b0",
+    "ICAO24": "4080e4",
+    "Speed": "210.61 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.314,
+    "longitude": 10.9745
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SUI521",
+    "Heading": "149.14\u00b0",
+    "ICAO24": "4b0ea6",
+    "Speed": "141.43 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.3842,
+    "longitude": 7.0448
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "BAW64AH",
+    "Heading": "276.79\u00b0",
+    "ICAO24": "4080e0",
+    "Speed": "208.79 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.5327,
+    "longitude": 8.5174
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "NJE503G",
+    "Heading": "156.57\u00b0",
+    "ICAO24": "494102",
+    "Speed": "218.66 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.691,
+    "longitude": 8.2516
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N904G",
+    "Heading": "345.94\u00b0",
+    "ICAO24": "ac7e9e",
+    "Speed": "3.09 m/s",
+    "Time-pos": 1737651761,
+    "latitude": 47.6692,
+    "longitude": 9.5119
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "BAW910N",
+    "Heading": "106.28\u00b0",
+    "ICAO24": "4009c6",
+    "Speed": "207.4 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.2097,
+    "longitude": 7.1715
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "BOM1",
+    "Heading": "108.43\u00b0",
+    "ICAO24": "4401d4",
+    "Speed": "113.88 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.6523,
+    "longitude": 8.2879
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "EJU79ZR",
+    "Heading": "182.12\u00b0",
+    "ICAO24": "4401dc",
+    "Speed": "208.49 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.6826,
+    "longitude": 14.4417
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CFG5WM",
+    "Heading": "28.35\u00b0",
+    "ICAO24": "3c7981",
+    "Speed": "236.16 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.64,
+    "longitude": 8.5271
+  },
+  {
+    "Destination": "Saudi Arabia",
+    "Flight": "SVA120",
+    "Heading": "104.34\u00b0",
+    "ICAO24": "7103d6",
+    "Speed": "278.24 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.6308,
+    "longitude": 8.6069
+  },
+  {
+    "Destination": "Denmark",
+    "Flight": "MMD1340",
+    "Heading": "207.16\u00b0",
+    "ICAO24": "459744",
+    "Speed": "111.59 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.5738,
+    "longitude": 6.9635
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA455D",
+    "Heading": "294.56\u00b0",
+    "ICAO24": "44008f",
+    "Speed": "216.63 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.9317,
+    "longitude": 13.2051
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "EJU17MB",
+    "Heading": "116.15\u00b0",
+    "ICAO24": "440088",
+    "Speed": "253.31 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.7887,
+    "longitude": 7.2563
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "ALT777",
+    "Heading": "284.06\u00b0",
+    "ICAO24": "4b5d9f",
+    "Speed": "0.06 m/s",
+    "Time-pos": 1737651743,
+    "latitude": 47.4501,
+    "longitude": 8.558
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "ATL785",
+    "Heading": "340.31\u00b0",
+    "ICAO24": "4b5d9e",
+    "Speed": "0.13 m/s",
+    "Time-pos": 1737651579,
+    "latitude": 47.4622,
+    "longitude": 8.5537
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "ATL783",
+    "Heading": "95.62\u00b0",
+    "ICAO24": "4b5d9a",
+    "Speed": "6.43 m/s",
+    "Time-pos": 1737651646,
+    "latitude": 47.453,
+    "longitude": 8.5572
+  },
+  {
+    "Destination": "Israel",
+    "Flight": "ELY343",
+    "Heading": "306.84\u00b0",
+    "ICAO24": "738064",
+    "Speed": "210.2 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.3229,
+    "longitude": 12.4358
+  },
+  {
+    "Destination": "Israel",
+    "Flight": "ELY355",
+    "Heading": "306.61\u00b0",
+    "ICAO24": "738069",
+    "Speed": "204.44 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.3455,
+    "longitude": 10.4323
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH4UL",
+    "Heading": "67.5\u00b0",
+    "ICAO24": "3c6481",
+    "Speed": "5.4 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.3682,
+    "longitude": 13.4972
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CFG9CP",
+    "Heading": "8.46\u00b0",
+    "ICAO24": "3c6427",
+    "Speed": "227.29 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.3787,
+    "longitude": 6.5332
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR3AG",
+    "Heading": "9.39\u00b0",
+    "ICAO24": "4b1616",
+    "Speed": "214.31 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.676,
+    "longitude": 6.4816
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CFG003",
+    "Heading": "325.44\u00b0",
+    "ICAO24": "3c6424",
+    "Speed": "224.89 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.7127,
+    "longitude": 12.9051
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR303C",
+    "Heading": "94.9\u00b0",
+    "ICAO24": "4b1619",
+    "Speed": "253 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.3542,
+    "longitude": 11.6897
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR22B",
+    "Heading": "95.62\u00b0",
+    "ICAO24": "4b1615",
+    "Speed": "5.4 m/s",
+    "Time-pos": 1737651721,
+    "latitude": 47.455,
+    "longitude": 8.5615
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA55EZ",
+    "Heading": "300.16\u00b0",
+    "ICAO24": "440c8d",
+    "Speed": "213 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.1939,
+    "longitude": 12.3415
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA3SK",
+    "Heading": "169.13\u00b0",
+    "ICAO24": "44006c",
+    "Speed": "221.06 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.9535,
+    "longitude": 13.4776
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "HBPRO",
+    "Heading": "7.55\u00b0",
+    "ICAO24": "4b2964",
+    "Speed": "121.43 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 54.355,
+    "longitude": 11.0744
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR1BG",
+    "Heading": "26.86\u00b0",
+    "ICAO24": "4b161a",
+    "Speed": "176.46 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.8622,
+    "longitude": 8.9512
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH1ML",
+    "Heading": "344.85\u00b0",
+    "ICAO24": "3c6443",
+    "Speed": "173.21 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.9915,
+    "longitude": 10.7438
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH1425",
+    "Heading": "248.81\u00b0",
+    "ICAO24": "3c6442",
+    "Speed": "71.17 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.0683,
+    "longitude": 8.684
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH612",
+    "Heading": "105.88\u00b0",
+    "ICAO24": "3c644a",
+    "Speed": "240.68 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.5715,
+    "longitude": 11.768
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH24X",
+    "Heading": "288.48\u00b0",
+    "ICAO24": "3c644e",
+    "Speed": "202.86 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.5604,
+    "longitude": 10.1852
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH3AH",
+    "Heading": "44.88\u00b0",
+    "ICAO24": "3c644d",
+    "Speed": "166.97 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.7835,
+    "longitude": 11.4792
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH8YC",
+    "Heading": "137.51\u00b0",
+    "ICAO24": "3c644b",
+    "Speed": "232.31 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.7852,
+    "longitude": 9.3431
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM7911",
+    "Heading": "213.34\u00b0",
+    "ICAO24": "4856c9",
+    "Speed": "46.8 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 53.0721,
+    "longitude": 6.5971
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DESSC",
+    "Heading": "26.05\u00b0",
+    "ICAO24": "3d3606",
+    "Speed": "51.54 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.8183,
+    "longitude": 9.3764
+  },
+  {
+    "Destination": "China",
+    "Flight": "HLF8877",
+    "Heading": "232.67\u00b0",
+    "ICAO24": "78219a",
+    "Speed": "229.04 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 54.9576,
+    "longitude": 14.2725
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "EJU13PK",
+    "Heading": "85.14\u00b0",
+    "ICAO24": "440031",
+    "Speed": "255.05 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.9133,
+    "longitude": 8.0945
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR589X",
+    "Heading": "137.81\u00b0",
+    "ICAO24": "4b1693",
+    "Speed": "38.07 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.4691,
+    "longitude": 8.5538
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DCWWW",
+    "Heading": "113.37\u00b0",
+    "ICAO24": "3cfc6a",
+    "Speed": "156.92 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.1457,
+    "longitude": 6.9579
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR1ZL",
+    "Heading": "215.84\u00b0",
+    "ICAO24": "4b0294",
+    "Speed": "201.18 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.713,
+    "longitude": 9.3617
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR9VC",
+    "Heading": "5.14\u00b0",
+    "ICAO24": "4b0293",
+    "Speed": "229.85 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.759,
+    "longitude": 11.3597
+  },
+  {
+    "Destination": "Spain",
+    "Flight": "ANE55UZ",
+    "Heading": "57.63\u00b0",
+    "ICAO24": "345583",
+    "Speed": "247.9 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.6607,
+    "longitude": 9.8231
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "HUE12P",
+    "Heading": "251.79\u00b0",
+    "ICAO24": "4b0dd0",
+    "Speed": "123.48 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.2785,
+    "longitude": 7.8692
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE7V",
+    "Heading": "294.96\u00b0",
+    "ICAO24": "896188",
+    "Speed": "230.39 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.9527,
+    "longitude": 12.6967
+  },
+  {
+    "Destination": "France",
+    "Flight": "M02",
+    "Heading": "146.25\u00b0",
+    "ICAO24": "3849ff",
+    "Speed": "2.83 m/s",
+    "Time-pos": 1737651476,
+    "latitude": 47.6004,
+    "longitude": 7.5308
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "ATL779",
+    "Heading": "98.44\u00b0",
+    "ICAO24": "4b5d98",
+    "Speed": "8.23 m/s",
+    "Time-pos": 1737651622,
+    "latitude": 47.4522,
+    "longitude": 8.5576
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "SAS687",
+    "Heading": "195.28\u00b0",
+    "ICAO24": "4a91f8",
+    "Speed": "212.78 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.1745,
+    "longitude": 9.4915
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "BAW986G",
+    "Heading": "84.9\u00b0",
+    "ICAO24": "400982",
+    "Speed": "260.31 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.4425,
+    "longitude": 7.0265
+  },
+  {
+    "Destination": "France",
+    "Flight": "AFR1534",
+    "Heading": "56.23\u00b0",
+    "ICAO24": "392af3",
+    "Speed": "199.9 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.9773,
+    "longitude": 13.1703
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "GNY4914",
+    "Heading": "123.02\u00b0",
+    "ICAO24": "3e060a",
+    "Speed": "61.36 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.7238,
+    "longitude": 9.5031
+  },
+  {
+    "Destination": "Denmark",
+    "Flight": "OYTNA",
+    "Heading": "328.85\u00b0",
+    "ICAO24": "45d1c1",
+    "Speed": "186.95 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 54.1559,
+    "longitude": 11.2389
+  },
+  {
+    "Destination": "United States",
+    "Flight": "R72100",
+    "Heading": "265.91\u00b0",
+    "ICAO24": "ae1f73",
+    "Speed": "28.88 m/s",
+    "Time-pos": 1737651756,
+    "latitude": 49.2165,
+    "longitude": 11.8463
+  },
+  {
+    "Destination": "Hungary",
+    "Flight": "WZZ933",
+    "Heading": "111.06\u00b0",
+    "ICAO24": "471db6",
+    "Speed": "242 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.0181,
+    "longitude": 10.3744
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "OEEKA",
+    "Heading": "175.5\u00b0",
+    "ICAO24": "44013f",
+    "Speed": "157.39 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.3857,
+    "longitude": 10.3845
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "MJF4C",
+    "Heading": "344.92\u00b0",
+    "ICAO24": "440d2b",
+    "Speed": "239.23 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.5213,
+    "longitude": 6.2697
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "EJU93CF",
+    "Heading": "70.31\u00b0",
+    "ICAO24": "440d10",
+    "Speed": "9.77 m/s",
+    "Time-pos": 1737651697,
+    "latitude": 52.3566,
+    "longitude": 13.5055
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "TAP543W",
+    "Heading": "233.13\u00b0",
+    "ICAO24": "495219",
+    "Speed": "61.73 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.2622,
+    "longitude": 6.7143
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM34V",
+    "Heading": "306.81\u00b0",
+    "ICAO24": "48455a",
+    "Speed": "209.48 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.0632,
+    "longitude": 7.581
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM50H",
+    "Heading": "95.62\u00b0",
+    "ICAO24": "48455d",
+    "Speed": "5.66 m/s",
+    "Time-pos": 1737651728,
+    "latitude": 47.4551,
+    "longitude": 8.5575
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM1936",
+    "Heading": "9.65\u00b0",
+    "ICAO24": "484557",
+    "Speed": "233.26 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.8099,
+    "longitude": 6.181
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE39K",
+    "Heading": "294.22\u00b0",
+    "ICAO24": "896218",
+    "Speed": "224.5 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.289,
+    "longitude": 11.4706
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": null,
+    "Heading": "45\u00b0",
+    "ICAO24": "4b5c20",
+    "Speed": "0.19 m/s",
+    "Time-pos": 1737651746,
+    "latitude": 47.4507,
+    "longitude": 8.5487
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "IJM925",
+    "Heading": "19.69\u00b0",
+    "ICAO24": "440be6",
+    "Speed": "1.54 m/s",
+    "Time-pos": 1737651669,
+    "latitude": 47.4552,
+    "longitude": 8.5615
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "ORION1",
+    "Heading": "0\u00b0",
+    "ICAO24": "4b5c65",
+    "Speed": "1.03 m/s",
+    "Time-pos": 1737651575,
+    "latitude": 47.4513,
+    "longitude": 8.5598
+  },
+  {
+    "Destination": "Finland",
+    "Flight": "FSF600V",
+    "Heading": "148.58\u00b0",
+    "ICAO24": "461838",
+    "Speed": "144.08 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.2804,
+    "longitude": 6.4447
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "ZEBRA4",
+    "Heading": "258.75\u00b0",
+    "ICAO24": "4b5c6d",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651760,
+    "latitude": 47.4622,
+    "longitude": 8.5504
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "TKJ8ZU",
+    "Heading": "117.06\u00b0",
+    "ICAO24": "4bab5a",
+    "Speed": "242.04 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.5035,
+    "longitude": 11.5691
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DIAMI",
+    "Heading": "122.03\u00b0",
+    "ICAO24": "3e1888",
+    "Speed": "123.19 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.5864,
+    "longitude": 11.1631
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": null,
+    "Heading": "334.69\u00b0",
+    "ICAO24": "4bab46",
+    "Speed": "2.83 m/s",
+    "Time-pos": 1737651745,
+    "latitude": 47.599,
+    "longitude": 7.5259
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "ETD58B",
+    "Heading": "289.56\u00b0",
+    "ICAO24": "8962e5",
+    "Speed": "224.38 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.8919,
+    "longitude": 8.5038
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N165QS",
+    "Heading": "163.12\u00b0",
+    "ICAO24": "a105b0",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651761,
+    "latitude": 48.689,
+    "longitude": 9.2003
+  },
+  {
+    "Destination": "Israel",
+    "Flight": "ISR116",
+    "Heading": "122.11\u00b0",
+    "ICAO24": "738286",
+    "Speed": "247.79 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.5942,
+    "longitude": 13.5054
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "NJE816C",
+    "Heading": "315.47\u00b0",
+    "ICAO24": "490d0c",
+    "Speed": "222.27 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.4378,
+    "longitude": 9.9109
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N228AP",
+    "Heading": "177.19\u00b0",
+    "ICAO24": "a1fec7",
+    "Speed": "9.26 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.6172,
+    "longitude": 7.5104
+  },
+  {
+    "Destination": "Morocco",
+    "Flight": "RAM811D",
+    "Heading": "184.88\u00b0",
+    "ICAO24": "02012c",
+    "Speed": "175.55 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.6697,
+    "longitude": 8.5261
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "BID41C",
+    "Heading": "285.15\u00b0",
+    "ICAO24": "3cc57e",
+    "Speed": "122.05 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.9619,
+    "longitude": 7.9419
+  },
+  {
+    "Destination": "Luxembourg",
+    "Flight": "NATO01",
+    "Heading": "241.16\u00b0",
+    "ICAO24": "4d03cc",
+    "Speed": "162.09 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.2571,
+    "longitude": 8.3445
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG71W",
+    "Heading": "135.73\u00b0",
+    "ICAO24": "3c6dd6",
+    "Speed": "114.23 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.5359,
+    "longitude": 7.1609
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE61",
+    "Heading": "319.97\u00b0",
+    "ICAO24": "896304",
+    "Speed": "235.15 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.7033,
+    "longitude": 14.7309
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE163",
+    "Heading": "291.49\u00b0",
+    "ICAO24": "896315",
+    "Speed": "228.89 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.8754,
+    "longitude": 7.9263
+  },
+  {
+    "Destination": "Oman",
+    "Flight": "OMA117",
+    "Heading": "288.6\u00b0",
+    "ICAO24": "70c0ce",
+    "Speed": "229.06 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.8363,
+    "longitude": 11.6278
+  },
+  {
+    "Destination": "Oman",
+    "Flight": "OMA101",
+    "Heading": "292.04\u00b0",
+    "ICAO24": "70c0f9",
+    "Speed": "227.55 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.4942,
+    "longitude": 7.1761
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE79Y",
+    "Heading": "111.12\u00b0",
+    "ICAO24": "89639d",
+    "Speed": "271.32 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.3494,
+    "longitude": 11.3442
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "RYR2ZZ",
+    "Heading": "261.62\u00b0",
+    "ICAO24": "4ca8e8",
+    "Speed": "201.24 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.8802,
+    "longitude": 11.6084
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "THY8YM",
+    "Heading": "115.47\u00b0",
+    "ICAO24": "4bb206",
+    "Speed": "253.58 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.6903,
+    "longitude": 13.9602
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM1823",
+    "Heading": "128.17\u00b0",
+    "ICAO24": "4853f4",
+    "Speed": "159 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.6649,
+    "longitude": 8.1292
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "THY7NK",
+    "Heading": "343.12\u00b0",
+    "ICAO24": "4baa53",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651452,
+    "latitude": 48.6895,
+    "longitude": 9.1964
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "THY9CZ",
+    "Heading": "262.44\u00b0",
+    "ICAO24": "4baa52",
+    "Speed": "109.5 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.2162,
+    "longitude": 14.624
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE7TR",
+    "Heading": "288.64\u00b0",
+    "ICAO24": "8963ef",
+    "Speed": "230.2 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.5629,
+    "longitude": 6.822
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE19",
+    "Heading": "291.35\u00b0",
+    "ICAO24": "8963ed",
+    "Speed": "230.33 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.1318,
+    "longitude": 8.5881
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE70M",
+    "Heading": "292.37\u00b0",
+    "ICAO24": "8963e6",
+    "Speed": "232.53 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.9263,
+    "longitude": 9.438
+  },
+  {
+    "Destination": "Oman",
+    "Flight": "OMA131",
+    "Heading": "294.67\u00b0",
+    "ICAO24": "70c0fe",
+    "Speed": "229.27 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.3335,
+    "longitude": 11.3458
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "THY5KU",
+    "Heading": "110.06\u00b0",
+    "ICAO24": "4baa8e",
+    "Speed": "257.95 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.9766,
+    "longitude": 7.3015
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "PWF53",
+    "Heading": "261.56\u00b0",
+    "ICAO24": "3cd71c",
+    "Speed": "12.35 m/s",
+    "Time-pos": 1737651651,
+    "latitude": 52.3189,
+    "longitude": 10.5505
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "TUI121",
+    "Heading": "64.69\u00b0",
+    "ICAO24": "3c7428",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651451,
+    "latitude": 51.2766,
+    "longitude": 6.7561
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "SAS56H",
+    "Heading": "203.2\u00b0",
+    "ICAO24": "4ac9e4",
+    "Speed": "203.73 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.9032,
+    "longitude": 10.7942
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "ETD917",
+    "Heading": "308.44\u00b0",
+    "ICAO24": "89650a",
+    "Speed": "225.93 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.317,
+    "longitude": 14.3231
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DBOLT",
+    "Heading": "157.5\u00b0",
+    "ICAO24": "3cbd94",
+    "Speed": "6.43 m/s",
+    "Time-pos": 1737651575,
+    "latitude": 51.2763,
+    "longitude": 6.7552
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DERCW",
+    "Heading": "267.84\u00b0",
+    "ICAO24": "3d31d6",
+    "Speed": "81.85 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.414,
+    "longitude": 7.2979
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM896",
+    "Heading": "305.79\u00b0",
+    "ICAO24": "484369",
+    "Speed": "229.59 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.8535,
+    "longitude": 7.485
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CHX11",
+    "Heading": "73.88\u00b0",
+    "ICAO24": "3e0fe0",
+    "Speed": "68.54 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.9595,
+    "longitude": 7.9735
+  },
+  {
+    "Destination": "Sri Lanka",
+    "Flight": "ALK503",
+    "Heading": "297.8\u00b0",
+    "ICAO24": "77058f",
+    "Speed": "223.91 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.5538,
+    "longitude": 13.5969
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "PWF995",
+    "Heading": "222.77\u00b0",
+    "ICAO24": "3ce9dd",
+    "Speed": "112.13 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.7632,
+    "longitude": 9.5294
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM90Y",
+    "Heading": "351.32\u00b0",
+    "ICAO24": "484f80",
+    "Speed": "235.22 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.8053,
+    "longitude": 11.0499
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CHX42",
+    "Heading": "102.82\u00b0",
+    "ICAO24": "3e0fea",
+    "Speed": "76.5 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 54.3819,
+    "longitude": 9.7638
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE33Y",
+    "Heading": "289.3\u00b0",
+    "ICAO24": "896482",
+    "Speed": "227.29 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.6407,
+    "longitude": 10.3371
+  },
+  {
+    "Destination": "Luxembourg",
+    "Flight": "JFA98Y",
+    "Heading": "142.93\u00b0",
+    "ICAO24": "4d02d7",
+    "Speed": "232.12 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.5357,
+    "longitude": 6.0465
+  },
+  {
+    "Destination": "Czech Republic",
+    "Flight": "OKELD",
+    "Heading": "53.38\u00b0",
+    "ICAO24": "49d5b4",
+    "Speed": "239.73 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.2353,
+    "longitude": 13.7924
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CHX75",
+    "Heading": "260.16\u00b0",
+    "ICAO24": "3ddc04",
+    "Speed": "51.17 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.0061,
+    "longitude": 7.6611
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N28ZD",
+    "Heading": "59.06\u00b0",
+    "ICAO24": "a2cde5",
+    "Speed": "5.14 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.6746,
+    "longitude": 9.5247
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG4KC",
+    "Heading": "132.19\u00b0",
+    "ICAO24": "3c49ce",
+    "Speed": "237.46 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.9293,
+    "longitude": 12.4181
+  },
+  {
+    "Destination": "Denmark",
+    "Flight": "SUS1446",
+    "Heading": "250.08\u00b0",
+    "ICAO24": "45b873",
+    "Speed": "169.08 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.4386,
+    "longitude": 8.456
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DCPOS",
+    "Heading": "0.61\u00b0",
+    "ICAO24": "3ce91a",
+    "Speed": "241.8 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.4046,
+    "longitude": 9.4766
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "UAE2AY",
+    "Heading": "306.59\u00b0",
+    "ICAO24": "89661e",
+    "Speed": "228.72 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.5979,
+    "longitude": 11.7611
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DHXBB",
+    "Heading": "293.86\u00b0",
+    "ICAO24": "3e0f77",
+    "Speed": "29.25 m/s",
+    "Time-pos": 1737651508,
+    "latitude": 49.8077,
+    "longitude": 9.9655
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CHX32",
+    "Heading": "225\u00b0",
+    "ICAO24": "3e0f76",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651447,
+    "latitude": 48.1528,
+    "longitude": 11.5485
+  },
+  {
+    "Destination": "China",
+    "Flight": "CCA837",
+    "Heading": "212.38\u00b0",
+    "ICAO24": "780ad1",
+    "Speed": "224.78 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.1987,
+    "longitude": 14.9014
+  },
+  {
+    "Destination": "Kuwait",
+    "Flight": "KAC105",
+    "Heading": "291.28\u00b0",
+    "ICAO24": "706059",
+    "Speed": "229.66 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.3739,
+    "longitude": 7.6774
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CHX46",
+    "Heading": "230.62\u00b0",
+    "ICAO24": "3e0f92",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651675,
+    "latitude": 51.3833,
+    "longitude": 12.376
+  },
+  {
+    "Destination": "China",
+    "Flight": "CSN408",
+    "Heading": "26.1\u00b0",
+    "ICAO24": "780aeb",
+    "Speed": "257.22 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 54.5369,
+    "longitude": 11.8645
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "BAW60",
+    "Heading": "306.21\u00b0",
+    "ICAO24": "406591",
+    "Speed": "233.37 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.3367,
+    "longitude": 10.5694
+  },
+  {
+    "Destination": "Belgium",
+    "Flight": "PGC39P",
+    "Heading": "3.99\u00b0",
+    "ICAO24": "44c063",
+    "Speed": "155.22 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.516,
+    "longitude": 6.376
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM89Y",
+    "Heading": "181.44\u00b0",
+    "ICAO24": "484c54",
+    "Speed": "225.91 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.5195,
+    "longitude": 6.698
+  },
+  {
+    "Destination": "Kuwait",
+    "Flight": "KAC102",
+    "Heading": "114.3\u00b0",
+    "ICAO24": "70605d",
+    "Speed": "267.55 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.8464,
+    "longitude": 13.6694
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "TRA1R",
+    "Heading": "123.75\u00b0",
+    "ICAO24": "484c59",
+    "Speed": "6.69 m/s",
+    "Time-pos": 1737651543,
+    "latitude": 50.1037,
+    "longitude": 14.2659
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "SXS9GF",
+    "Heading": "307.63\u00b0",
+    "ICAO24": "4bcdf6",
+    "Speed": "201.37 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.9439,
+    "longitude": 13.0899
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "CND430",
+    "Heading": "318.09\u00b0",
+    "ICAO24": "486648",
+    "Speed": "222.59 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.6808,
+    "longitude": 11.096
+  },
+  {
+    "Destination": "Finland",
+    "Flight": "FIN5DL",
+    "Heading": "220.31\u00b0",
+    "ICAO24": "461f9e",
+    "Speed": "186.87 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.1967,
+    "longitude": 8.8334
+  },
+  {
+    "Destination": "Spain",
+    "Flight": "IBE07WC",
+    "Heading": "9.54\u00b0",
+    "ICAO24": "346458",
+    "Speed": "186.23 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.1673,
+    "longitude": 9.1698
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N45LX",
+    "Heading": "208.06\u00b0",
+    "ICAO24": "a570d3",
+    "Speed": "203.45 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.3935,
+    "longitude": 10.8653
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "LOT3ML",
+    "Heading": "256.97\u00b0",
+    "ICAO24": "48af0d",
+    "Speed": "212.27 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.1355,
+    "longitude": 11.611
+  },
+  {
+    "Destination": "Jordan",
+    "Flight": "RJA112",
+    "Heading": "118.18\u00b0",
+    "ICAO24": "740823",
+    "Speed": "270.2 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.2523,
+    "longitude": 7.858
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "LOT407",
+    "Heading": "278.48\u00b0",
+    "ICAO24": "48af09",
+    "Speed": "216.37 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.6807,
+    "longitude": 13.0631
+  },
+  {
+    "Destination": "Finland",
+    "Flight": "FIN95C",
+    "Heading": "182.1\u00b0",
+    "ICAO24": "461f62",
+    "Speed": "182.24 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 53.1764,
+    "longitude": 13.8935
+  },
+  {
+    "Destination": "United Arab Emirates",
+    "Flight": "ETD123",
+    "Heading": "258.04\u00b0",
+    "ICAO24": "89656f",
+    "Speed": "134.09 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.2476,
+    "longitude": 9.7052
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "NJE122A",
+    "Heading": "292.3\u00b0",
+    "ICAO24": "491186",
+    "Speed": "219.63 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.3756,
+    "longitude": 7.4137
+  },
+  {
+    "Destination": "Finland",
+    "Flight": "FIN82Y",
+    "Heading": "232.54\u00b0",
+    "ICAO24": "461f30",
+    "Speed": "69.35 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.3557,
+    "longitude": 6.9123
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "BAW718Y",
+    "Heading": "136.96\u00b0",
+    "ICAO24": "4076e4",
+    "Speed": "74.62 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.5256,
+    "longitude": 8.4767
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "BAW96E",
+    "Heading": "61.87\u00b0",
+    "ICAO24": "4076e3",
+    "Speed": "176.76 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.78,
+    "longitude": 9.5188
+  },
+  {
+    "Destination": "China",
+    "Flight": "CAO3105",
+    "Heading": "225.86\u00b0",
+    "ICAO24": "780019",
+    "Speed": "218.65 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.7645,
+    "longitude": 11.055
+  },
+  {
+    "Destination": "Czech Republic",
+    "Flight": "SMGLR45",
+    "Heading": "1.43\u00b0",
+    "ICAO24": "4984b6",
+    "Speed": "82.34 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.0993,
+    "longitude": 14.9283
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "AUA266",
+    "Heading": "87.63\u00b0",
+    "ICAO24": "4ab567",
+    "Speed": "62.3 m/s",
+    "Time-pos": 1737651698,
+    "latitude": 48.2326,
+    "longitude": 14.1708
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG5HT",
+    "Heading": "28.12\u00b0",
+    "ICAO24": "3c48f1",
+    "Speed": "1.29 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.2936,
+    "longitude": 6.7857
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG2P",
+    "Heading": "133.28\u00b0",
+    "ICAO24": "3c48ee",
+    "Speed": "242.38 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.6223,
+    "longitude": 12.1674
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "SAS651",
+    "Heading": "214.95\u00b0",
+    "ICAO24": "4ab56b",
+    "Speed": "129.3 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 54.4106,
+    "longitude": 11.1298
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "NJE723H",
+    "Heading": "118.87\u00b0",
+    "ICAO24": "491316",
+    "Speed": "171.54 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.7055,
+    "longitude": 7.3838
+  },
+  {
+    "Destination": "Croatia",
+    "Flight": null,
+    "Heading": "250.31\u00b0",
+    "ICAO24": "501c3b",
+    "Speed": "5.66 m/s",
+    "Time-pos": 1737651701,
+    "latitude": 50.0419,
+    "longitude": 8.5572
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM843",
+    "Heading": "107.06\u00b0",
+    "ICAO24": "484cbc",
+    "Speed": "264.76 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.0587,
+    "longitude": 12.888
+  },
+  {
+    "Destination": "Sweden",
+    "Flight": "BRX9850",
+    "Heading": "39.71\u00b0",
+    "ICAO24": "4ab562",
+    "Speed": "153.8 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 55.0126,
+    "longitude": 7.9116
+  },
+  {
+    "Destination": "Czech Republic",
+    "Flight": "TIE029M",
+    "Heading": "195.86\u00b0",
+    "ICAO24": "49d4c9",
+    "Speed": "235.31 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.8301,
+    "longitude": 11.9864
+  },
+  {
+    "Destination": "Luxembourg",
+    "Flight": "FYL72BC",
+    "Heading": "359.84\u00b0",
+    "ICAO24": "4d024a",
+    "Speed": "186.23 m/s",
+    "Time-pos": 1737651754,
+    "latitude": 47.986,
+    "longitude": 9.4623
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "JBD1",
+    "Heading": "317.81\u00b0",
+    "ICAO24": "3c48a9",
+    "Speed": "12.35 m/s",
+    "Time-pos": 1737651686,
+    "latitude": 50.865,
+    "longitude": 7.1328
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "AWH55S",
+    "Heading": "225\u00b0",
+    "ICAO24": "3cc24b",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.8683,
+    "longitude": 7.1197
+  },
+  {
+    "Destination": "Finland",
+    "Flight": "FIN6BC",
+    "Heading": "263.7\u00b0",
+    "ICAO24": "461fa9",
+    "Speed": "75.05 m/s",
+    "Time-pos": 1737651638,
+    "latitude": 48.3668,
+    "longitude": 11.8206
+  },
+  {
+    "Destination": "Finland",
+    "Flight": "FIN7RA",
+    "Heading": "198.97\u00b0",
+    "ICAO24": "461fa2",
+    "Speed": "210.52 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.7888,
+    "longitude": 10.4703
+  },
+  {
+    "Destination": "Finland",
+    "Flight": "FIN7AC",
+    "Heading": "218.59\u00b0",
+    "ICAO24": "461fa1",
+    "Speed": "211.94 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 53.6503,
+    "longitude": 8.087
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM91X",
+    "Heading": "180.77\u00b0",
+    "ICAO24": "48548d",
+    "Speed": "191.39 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.1197,
+    "longitude": 6.6803
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM41L",
+    "Heading": "149.49\u00b0",
+    "ICAO24": "484164",
+    "Speed": "247.22 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.7466,
+    "longitude": 9.9347
+  },
+  {
+    "Destination": "China",
+    "Flight": "CCA897",
+    "Heading": "234.14\u00b0",
+    "ICAO24": "7812cf",
+    "Speed": "226.6 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 54.8326,
+    "longitude": 12.2362
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "SXS3XE",
+    "Heading": "288.65\u00b0",
+    "ICAO24": "4bcdac",
+    "Speed": "130.31 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.7099,
+    "longitude": 9.7583
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "FCK1EL",
+    "Heading": "25.36\u00b0",
+    "ICAO24": "3cce70",
+    "Speed": "87.67 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.1372,
+    "longitude": 10.8222
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM1856",
+    "Heading": "339.1\u00b0",
+    "ICAO24": "484130",
+    "Speed": "193.28 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.7511,
+    "longitude": 11.4926
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "RYR1902",
+    "Heading": "286.51\u00b0",
+    "ICAO24": "4ca700",
+    "Speed": "213.56 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.6462,
+    "longitude": 12.2121
+  },
+  {
+    "Destination": "France",
+    "Flight": "CTM1305",
+    "Heading": "224.02\u00b0",
+    "ICAO24": "3b77ff",
+    "Speed": "127.34 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.0487,
+    "longitude": 6.4539
+  },
+  {
+    "Destination": "Norway",
+    "Flight": "NSZ5502",
+    "Heading": "33.12\u00b0",
+    "ICAO24": "4794f2",
+    "Speed": "243.85 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.4471,
+    "longitude": 13.8909
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "EZY26CZ",
+    "Heading": "284.21\u00b0",
+    "ICAO24": "405f13",
+    "Speed": "201.13 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.7352,
+    "longitude": 6.2735
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "HBKTT",
+    "Heading": "331.28\u00b0",
+    "ICAO24": "4b1c69",
+    "Speed": "42.82 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.0358,
+    "longitude": 8.9208
+  },
+  {
+    "Destination": "Luxembourg",
+    "Flight": "LGL46L",
+    "Heading": "242.38\u00b0",
+    "ICAO24": "4d00d4",
+    "Speed": "49.93 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.6754,
+    "longitude": 6.3438
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "TUI6YX",
+    "Heading": "25.52\u00b0",
+    "ICAO24": "3c49b1",
+    "Speed": "238.85 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.5596,
+    "longitude": 8.5157
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "BMW72",
+    "Heading": "279.83\u00b0",
+    "ICAO24": "3c49b7",
+    "Speed": "210.93 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.9278,
+    "longitude": 14.4192
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "SXS67P",
+    "Heading": "271.71\u00b0",
+    "ICAO24": "4bce0e",
+    "Speed": "103.45 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.2608,
+    "longitude": 7.1394
+  },
+  {
+    "Destination": "Taiwan",
+    "Flight": "EVA067",
+    "Heading": "294.26\u00b0",
+    "ICAO24": "899040",
+    "Speed": "222.88 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.2905,
+    "longitude": 14.4996
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "RYR27KN",
+    "Heading": "98\u00b0",
+    "ICAO24": "4ca4f4",
+    "Speed": "251.44 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.5306,
+    "longitude": 5.9707
+  },
+  {
+    "Destination": "Luxembourg",
+    "Flight": "CLX5E",
+    "Heading": "86.69\u00b0",
+    "ICAO24": "4d0110",
+    "Speed": "240.65 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.9906,
+    "longitude": 6.9085
+  },
+  {
+    "Destination": "Taiwan",
+    "Flight": "EVA075",
+    "Heading": "306.95\u00b0",
+    "ICAO24": "899030",
+    "Speed": "228.52 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.6718,
+    "longitude": 11.595
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "LOT5YB",
+    "Heading": "329.66\u00b0",
+    "ICAO24": "48ad81",
+    "Speed": "104.91 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.076,
+    "longitude": 14.0677
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM1225",
+    "Heading": "48.09\u00b0",
+    "ICAO24": "486491",
+    "Speed": "236.43 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 54.7952,
+    "longitude": 9.0414
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "KLM47V",
+    "Heading": "196.08\u00b0",
+    "ICAO24": "3c1aeb",
+    "Speed": "91.02 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.0085,
+    "longitude": 8.4911
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "LOT2WP",
+    "Heading": "255.84\u00b0",
+    "ICAO24": "48ad09",
+    "Speed": "170.31 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.9342,
+    "longitude": 7.5968
+  },
+  {
+    "Destination": "China",
+    "Flight": "CES5013",
+    "Heading": "193.65\u00b0",
+    "ICAO24": "78028e",
+    "Speed": "222.35 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.3847,
+    "longitude": 14.4966
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "LOT5CV",
+    "Heading": "240.16\u00b0",
+    "ICAO24": "48ad01",
+    "Speed": "197.49 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.7397,
+    "longitude": 11.7928
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "TUI6DL",
+    "Heading": "340.28\u00b0",
+    "ICAO24": "3c496d",
+    "Speed": "160.12 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.8502,
+    "longitude": 9.1895
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "TUI996T",
+    "Heading": "262.61\u00b0",
+    "ICAO24": "3c496a",
+    "Speed": "112.05 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.4216,
+    "longitude": 7.5639
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N142QS",
+    "Heading": "209.33\u00b0",
+    "ICAO24": "a0ab8d",
+    "Speed": "123.92 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.9426,
+    "longitude": 8.5135
+  },
+  {
+    "Destination": "France",
+    "Flight": "BGA131J",
+    "Heading": "223.05\u00b0",
+    "ICAO24": "395d69",
+    "Speed": "171.07 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.3491,
+    "longitude": 7.9419
+  },
+  {
+    "Destination": "Spain",
+    "Flight": "GES721Y",
+    "Heading": "289.69\u00b0",
+    "ICAO24": "3473cf",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651760,
+    "latitude": 47.4501,
+    "longitude": 8.5488
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N1812C",
+    "Heading": "95.62\u00b0",
+    "ICAO24": "a14704",
+    "Speed": "4.63 m/s",
+    "Time-pos": 1737651712,
+    "latitude": 47.455,
+    "longitude": 8.5588
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "LOT335",
+    "Heading": "262.18\u00b0",
+    "ICAO24": "48adb9",
+    "Speed": "200.44 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.058,
+    "longitude": 8.9489
+  },
+  {
+    "Destination": "Latvia",
+    "Flight": "BTI3TG",
+    "Heading": "230.45\u00b0",
+    "ICAO24": "502d10",
+    "Speed": "195.5 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 53.4132,
+    "longitude": 11.4161
+  },
+  {
+    "Destination": "Latvia",
+    "Flight": "BTI9AG",
+    "Heading": "210.68\u00b0",
+    "ICAO24": "502d3e",
+    "Speed": "198.6 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.1734,
+    "longitude": 10.2663
+  },
+  {
+    "Destination": "Republic of Korea",
+    "Flight": "AAR542",
+    "Heading": "84.42\u00b0",
+    "ICAO24": "71c078",
+    "Speed": "227.43 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.9391,
+    "longitude": 9.9887
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "PTN95Z",
+    "Heading": "47.81\u00b0",
+    "ICAO24": "3ce686",
+    "Speed": "5.14 m/s",
+    "Time-pos": 1737651498,
+    "latitude": 50.0216,
+    "longitude": 8.5307
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM74N",
+    "Heading": "334.72\u00b0",
+    "ICAO24": "484b90",
+    "Speed": "225.29 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.0006,
+    "longitude": 10.413
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "LOT7VA",
+    "Heading": "242.79\u00b0",
+    "ICAO24": "48ae81",
+    "Speed": "203.62 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.4506,
+    "longitude": 13.5596
+  },
+  {
+    "Destination": "France",
+    "Flight": "TVF83RB",
+    "Heading": "62.54\u00b0",
+    "ICAO24": "3964f8",
+    "Speed": "249.88 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.6483,
+    "longitude": 6.1845
+  },
+  {
+    "Destination": "Qatar",
+    "Flight": "QTR8159",
+    "Heading": "240.99\u00b0",
+    "ICAO24": "06a30a",
+    "Speed": "70 m/s",
+    "Time-pos": 1737651692,
+    "latitude": 49.637,
+    "longitude": 6.2399
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "TRA4J",
+    "Heading": "162.04\u00b0",
+    "ICAO24": "48520b",
+    "Speed": "176.84 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.6319,
+    "longitude": 11.7131
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "TRA6821",
+    "Heading": "134.32\u00b0",
+    "ICAO24": "48520a",
+    "Speed": "244.47 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.4654,
+    "longitude": 8.3922
+  },
+  {
+    "Destination": "Qatar",
+    "Flight": "QTR38P",
+    "Heading": "295.83\u00b0",
+    "ICAO24": "06a2f1",
+    "Speed": "232.62 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.7316,
+    "longitude": 13.2464
+  },
+  {
+    "Destination": "Latvia",
+    "Flight": "BTI38N",
+    "Heading": "280.64\u00b0",
+    "ICAO24": "502ce3",
+    "Speed": "206.23 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.3318,
+    "longitude": 13.8272
+  },
+  {
+    "Destination": "Latvia",
+    "Flight": "BTI6C3",
+    "Heading": "235.48\u00b0",
+    "ICAO24": "502cd7",
+    "Speed": "207.91 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.8021,
+    "longitude": 6.6981
+  },
+  {
+    "Destination": "Latvia",
+    "Flight": "BTI8BX",
+    "Heading": "205.32\u00b0",
+    "ICAO24": "502d96",
+    "Speed": "191.23 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.3446,
+    "longitude": 12.9427
+  },
+  {
+    "Destination": "Czech Republic",
+    "Flight": "ABP611",
+    "Heading": "225.92\u00b0",
+    "ICAO24": "49d44f",
+    "Speed": "226.29 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.6277,
+    "longitude": 7.6649
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "IBIS8",
+    "Heading": "25.29\u00b0",
+    "ICAO24": "3cd2e5",
+    "Speed": "92.74 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.6665,
+    "longitude": 8.6355
+  },
+  {
+    "Destination": "China",
+    "Flight": "LHA4384",
+    "Heading": "352.8\u00b0",
+    "ICAO24": "7bc008",
+    "Speed": "250.45 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.1054,
+    "longitude": 14.1323
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "TKJ19G",
+    "Heading": "118.34\u00b0",
+    "ICAO24": "4ba8c5",
+    "Speed": "244.91 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.3292,
+    "longitude": 14.9534
+  },
+  {
+    "Destination": "United States",
+    "Flight": "LXJ667",
+    "Heading": "95.62\u00b0",
+    "ICAO24": "a8cecd",
+    "Speed": "7.46 m/s",
+    "Time-pos": 1737651524,
+    "latitude": 47.456,
+    "longitude": 8.5642
+  },
+  {
+    "Destination": "France",
+    "Flight": "AFR1511",
+    "Heading": "137.81\u00b0",
+    "ICAO24": "39bdae",
+    "Speed": "0.9 m/s",
+    "Time-pos": 1737651751,
+    "latitude": 53.6345,
+    "longitude": 10.0024
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CHX77",
+    "Heading": "61.36\u00b0",
+    "ICAO24": "3e1215",
+    "Speed": "69.76 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.9898,
+    "longitude": 8.0833
+  },
+  {
+    "Destination": "France",
+    "Flight": "VANT37",
+    "Heading": "30.88\u00b0",
+    "ICAO24": "3b7564",
+    "Speed": "174.42 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.0741,
+    "longitude": 6.8432
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "BAW955L",
+    "Heading": "318.83\u00b0",
+    "ICAO24": "405a46",
+    "Speed": "207.08 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.106,
+    "longitude": 10.802
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "TWG242",
+    "Heading": "59.89\u00b0",
+    "ICAO24": "3e2503",
+    "Speed": "100.5 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.1425,
+    "longitude": 10.2346
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "TYW758",
+    "Heading": "42.65\u00b0",
+    "ICAO24": "440890",
+    "Speed": "248.3 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.7617,
+    "longitude": 6.4017
+  },
+  {
+    "Destination": "United States",
+    "Flight": "FDX6337",
+    "Heading": "341.64\u00b0",
+    "ICAO24": "acad76",
+    "Speed": "125.75 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.8581,
+    "longitude": 6.902
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CHX90",
+    "Heading": "171.18\u00b0",
+    "ICAO24": "3deb83",
+    "Speed": "60.39 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.5308,
+    "longitude": 8.6661
+  },
+  {
+    "Destination": "Malta",
+    "Flight": "TKJ1CD",
+    "Heading": "123.59\u00b0",
+    "ICAO24": "4d23e3",
+    "Speed": "253.83 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.2253,
+    "longitude": 14.2368
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA90LM",
+    "Heading": "257.55\u00b0",
+    "ICAO24": "44082d",
+    "Speed": "76.39 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.2716,
+    "longitude": 11.4262
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA1BT",
+    "Heading": "272.7\u00b0",
+    "ICAO24": "44082b",
+    "Speed": "196.74 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.0676,
+    "longitude": 13.772
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA57Y",
+    "Heading": "246.82\u00b0",
+    "ICAO24": "440829",
+    "Speed": "210.42 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.5008,
+    "longitude": 14.57
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA3BR",
+    "Heading": "272.25\u00b0",
+    "ICAO24": "440828",
+    "Speed": "196.16 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.1787,
+    "longitude": 14.1669
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA275",
+    "Heading": "309.25\u00b0",
+    "ICAO24": "440825",
+    "Speed": "217.9 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.0981,
+    "longitude": 14.0592
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA55C",
+    "Heading": "260.91\u00b0",
+    "ICAO24": "44081f",
+    "Speed": "182.35 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.8152,
+    "longitude": 10.98
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "SAS73C",
+    "Heading": "226.47\u00b0",
+    "ICAO24": "4caf7e",
+    "Speed": "212.15 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 54.1585,
+    "longitude": 9.6703
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "MMF18",
+    "Heading": "241.78\u00b0",
+    "ICAO24": "480c41",
+    "Speed": "127.28 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.1671,
+    "longitude": 8.0578
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "SFG55A",
+    "Heading": "3.17\u00b0",
+    "ICAO24": "3cdde1",
+    "Speed": "223.1 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.667,
+    "longitude": 9.5567
+  },
+  {
+    "Destination": "Republic of Korea",
+    "Flight": "KAL503",
+    "Heading": "292.83\u00b0",
+    "ICAO24": "71c251",
+    "Speed": "229.4 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.6056,
+    "longitude": 13.936
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA3TC",
+    "Heading": "307.78\u00b0",
+    "ICAO24": "4408de",
+    "Speed": "220 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.8352,
+    "longitude": 13.308
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "SAS579",
+    "Heading": "222.52\u00b0",
+    "ICAO24": "4cadd9",
+    "Speed": "210.09 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 54.8563,
+    "longitude": 9.9027
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "CFG6KW",
+    "Heading": "288.96\u00b0",
+    "ICAO24": "3c7a41",
+    "Speed": "212.15 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.6579,
+    "longitude": 12.438
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "RYR4UG",
+    "Heading": "212.35\u00b0",
+    "ICAO24": "4cadfe",
+    "Speed": "219.22 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.4068,
+    "longitude": 12.8391
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N456GA",
+    "Heading": "2.73\u00b0",
+    "ICAO24": "a588fd",
+    "Speed": "172.54 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.8946,
+    "longitude": 9.4423
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "BPO660",
+    "Heading": "254.41\u00b0",
+    "ICAO24": "3e0a34",
+    "Speed": "22.97 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.4034,
+    "longitude": 10.233
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "RYR99BD",
+    "Heading": "111.07\u00b0",
+    "ICAO24": "4cadf8",
+    "Speed": "254.7 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.2471,
+    "longitude": 10.3685
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N392MS",
+    "Heading": "149.06\u00b0",
+    "ICAO24": "a48b5b",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651710,
+    "latitude": 47.6726,
+    "longitude": 9.5207
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "PWF33",
+    "Heading": "263.99\u00b0",
+    "ICAO24": "3cdd24",
+    "Speed": "68.8 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.3724,
+    "longitude": 11.8949
+  },
+  {
+    "Destination": "China",
+    "Flight": "CSN677",
+    "Heading": "198.8\u00b0",
+    "ICAO24": "78180a",
+    "Speed": "205.96 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.6135,
+    "longitude": 7.6308
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "ITY414",
+    "Heading": "348.49\u00b0",
+    "ICAO24": "4cae12",
+    "Speed": "226.8 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.5048,
+    "longitude": 6.4384
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "FW13",
+    "Heading": "64.69\u00b0",
+    "ICAO24": "3c816c",
+    "Speed": "9.77 m/s",
+    "Time-pos": 1737651754,
+    "latitude": 51.4186,
+    "longitude": 12.2209
+  },
+  {
+    "Destination": "Malta",
+    "Flight": "HFM341",
+    "Heading": "294.2\u00b0",
+    "ICAO24": "4d22a8",
+    "Speed": "223.35 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.1553,
+    "longitude": 12.1486
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "BPO460",
+    "Heading": "255.96\u00b0",
+    "ICAO24": "3e0a3a",
+    "Speed": "8.48 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.1022,
+    "longitude": 8.6625
+  },
+  {
+    "Destination": "Italy",
+    "Flight": "DLA7VV",
+    "Heading": "33.01\u00b0",
+    "ICAO24": "300781",
+    "Speed": "155.82 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.0386,
+    "longitude": 11.9953
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DICKE",
+    "Heading": "154.57\u00b0",
+    "ICAO24": "3e1d98",
+    "Speed": "104.24 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.868,
+    "longitude": 10.1033
+  },
+  {
+    "Destination": "Germany",
+    "Flight": null,
+    "Heading": "87.19\u00b0",
+    "ICAO24": "3c8190",
+    "Speed": "13.38 m/s",
+    "Time-pos": 1737651714,
+    "latitude": 51.4091,
+    "longitude": 12.2096
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "RYR14WC",
+    "Heading": "12.13\u00b0",
+    "ICAO24": "4cae8d",
+    "Speed": "247.31 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 54.0125,
+    "longitude": 12.1976
+  },
+  {
+    "Destination": "China",
+    "Flight": "CSN307",
+    "Heading": "251.31\u00b0",
+    "ICAO24": "78193a",
+    "Speed": "147.72 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.862,
+    "longitude": 6.0813
+  },
+  {
+    "Destination": "Japan",
+    "Flight": "JAL46",
+    "Heading": "96.4\u00b0",
+    "ICAO24": "868340",
+    "Speed": "272.29 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.5411,
+    "longitude": 6.8212
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "RGA01",
+    "Heading": "307.87\u00b0",
+    "ICAO24": "4b43b1",
+    "Speed": "29.33 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.7567,
+    "longitude": 8.8121
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "RGA02",
+    "Heading": "15.4\u00b0",
+    "ICAO24": "4b43ac",
+    "Speed": "52.29 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.5836,
+    "longitude": 7.4948
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG7173",
+    "Heading": "61.88\u00b0",
+    "ICAO24": "3c56ec",
+    "Speed": "0.9 m/s",
+    "Time-pos": 1737651469,
+    "latitude": 53.6281,
+    "longitude": 10.0025
+  },
+  {
+    "Destination": "Malta",
+    "Flight": "TEU18",
+    "Heading": "333.73\u00b0",
+    "ICAO24": "4d2335",
+    "Speed": "181.29 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.8699,
+    "longitude": 11.0371
+  },
+  {
+    "Destination": "Germany",
+    "Flight": null,
+    "Heading": "123.75\u00b0",
+    "ICAO24": "3c56f3",
+    "Speed": "4.37 m/s",
+    "Time-pos": 1737651708,
+    "latitude": 52.3612,
+    "longitude": 13.5183
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG5JM",
+    "Heading": "78.75\u00b0",
+    "ICAO24": "3c56f2",
+    "Speed": "10.29 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.6262,
+    "longitude": 9.9958
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG1WE",
+    "Heading": "190.33\u00b0",
+    "ICAO24": "3c56f1",
+    "Speed": "195.05 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 53.1029,
+    "longitude": 9.6571
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DEDUM",
+    "Heading": "185.25\u00b0",
+    "ICAO24": "3d0ea8",
+    "Speed": "44.95 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.0248,
+    "longitude": 8.3412
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "AUA417",
+    "Heading": "285.85\u00b0",
+    "ICAO24": "440666",
+    "Speed": "209.1 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.6438,
+    "longitude": 13.6348
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "LAS1",
+    "Heading": "315\u00b0",
+    "ICAO24": "4b4419",
+    "Speed": "0.73 m/s",
+    "Time-pos": 1737651495,
+    "latitude": 47.5613,
+    "longitude": 7.5847
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "RYR6LX",
+    "Heading": "79.64\u00b0",
+    "ICAO24": "48c1a8",
+    "Speed": "237.43 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.7148,
+    "longitude": 7.0592
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "RYR82KU",
+    "Heading": "92.92\u00b0",
+    "ICAO24": "48c1a0",
+    "Speed": "242.1 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.4736,
+    "longitude": 12.2687
+  },
+  {
+    "Destination": "United States",
+    "Flight": "VJA807",
+    "Heading": "244.69\u00b0",
+    "ICAO24": "aafcd9",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651744,
+    "latitude": 47.6012,
+    "longitude": 7.5268
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "ABR468",
+    "Heading": "184.53\u00b0",
+    "ICAO24": "4cad4b",
+    "Speed": "228.1 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.5848,
+    "longitude": 8.5452
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "ITY112",
+    "Heading": "344.92\u00b0",
+    "ICAO24": "4cad59",
+    "Speed": "219.51 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.3962,
+    "longitude": 6.3216
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "RYR4RT",
+    "Heading": "113.87\u00b0",
+    "ICAO24": "4cad3b",
+    "Speed": "249.21 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.0625,
+    "longitude": 12.698
+  },
+  {
+    "Destination": "Spain",
+    "Flight": "FIN08PL",
+    "Heading": "222.47\u00b0",
+    "ICAO24": "342210",
+    "Speed": "214.1 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.6178,
+    "longitude": 6.876
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "RUK9566",
+    "Heading": "308.18\u00b0",
+    "ICAO24": "407caf",
+    "Speed": "211.39 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.6445,
+    "longitude": 13.6922
+  },
+  {
+    "Destination": "United States",
+    "Flight": "N178QS",
+    "Heading": "331.88\u00b0",
+    "ICAO24": "a13854",
+    "Speed": "0.06 m/s",
+    "Time-pos": 1737651753,
+    "latitude": 47.673,
+    "longitude": 9.5219
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "SAS1507",
+    "Heading": "237.69\u00b0",
+    "ICAO24": "4cad93",
+    "Speed": "213.66 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 54.2976,
+    "longitude": 9.0328
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DEFTA",
+    "Heading": "193.72\u00b0",
+    "ICAO24": "3d13ca",
+    "Speed": "45.54 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.2812,
+    "longitude": 8.6137
+  },
+  {
+    "Destination": "Malta",
+    "Flight": "VCJ55J",
+    "Heading": "230.91\u00b0",
+    "ICAO24": "4d2204",
+    "Speed": "194.19 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.8992,
+    "longitude": 14.2217
+  },
+  {
+    "Destination": "France",
+    "Flight": "AFR29ZN",
+    "Heading": "214.56\u00b0",
+    "ICAO24": "3986e2",
+    "Speed": "216.76 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 54.8367,
+    "longitude": 8.7356
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DEDRP",
+    "Heading": "265.79\u00b0",
+    "ICAO24": "3d0e5d",
+    "Speed": "35.08 m/s",
+    "Time-pos": 1737651492,
+    "latitude": 49.9615,
+    "longitude": 8.6548
+  },
+  {
+    "Destination": "Malta",
+    "Flight": "RYR4LW",
+    "Heading": "320.32\u00b0",
+    "ICAO24": "4d225f",
+    "Speed": "215.92 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.1199,
+    "longitude": 8.5349
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "DLH3NJ",
+    "Heading": "279.02\u00b0",
+    "ICAO24": "4cabda",
+    "Speed": "65.63 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.4924,
+    "longitude": 11.1414
+  },
+  {
+    "Destination": "India",
+    "Flight": "VTPRM",
+    "Heading": "153.53\u00b0",
+    "ICAO24": "801397",
+    "Speed": "137.35 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.4355,
+    "longitude": 8.0896
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "NJE757N",
+    "Heading": "267.8\u00b0",
+    "ICAO24": "49328e",
+    "Speed": "160.63 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.7285,
+    "longitude": 9.4404
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "NJE956L",
+    "Heading": "8.1\u00b0",
+    "ICAO24": "49328c",
+    "Speed": "244.74 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.6874,
+    "longitude": 8.8688
+  },
+  {
+    "Destination": "Portugal",
+    "Flight": "NJE024B",
+    "Heading": "244.69\u00b0",
+    "ICAO24": "493292",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.4488,
+    "longitude": 8.5585
+  },
+  {
+    "Destination": "France",
+    "Flight": "FGETJ",
+    "Heading": "267.26\u00b0",
+    "ICAO24": "391269",
+    "Speed": "75.2 m/s",
+    "Time-pos": 1737651761,
+    "latitude": 49.2225,
+    "longitude": 7.3813
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR961M",
+    "Heading": "69.23\u00b0",
+    "ICAO24": "4b19ef",
+    "Speed": "255.3 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.1197,
+    "longitude": 14.7401
+  },
+  {
+    "Destination": "Malta",
+    "Flight": "HYP022",
+    "Heading": "112.99\u00b0",
+    "ICAO24": "4d2189",
+    "Speed": "239.74 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.7663,
+    "longitude": 8.0822
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "BAW8TP",
+    "Heading": "293.02\u00b0",
+    "ICAO24": "406ae3",
+    "Speed": "211.84 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.8891,
+    "longitude": 9.4887
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR850",
+    "Heading": "5.95\u00b0",
+    "ICAO24": "4b19fe",
+    "Speed": "233.27 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.6701,
+    "longitude": 9.4227
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "RYR9ST",
+    "Heading": "281.9\u00b0",
+    "ICAO24": "48c2a8",
+    "Speed": "207.14 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.4564,
+    "longitude": 7.2646
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "RYR57RU",
+    "Heading": "107.92\u00b0",
+    "ICAO24": "48c2a5",
+    "Speed": "252.49 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.7174,
+    "longitude": 10.919
+  },
+  {
+    "Destination": "Republic of Korea",
+    "Flight": "KAL537",
+    "Heading": "70.31\u00b0",
+    "ICAO24": "71be23",
+    "Speed": "4.12 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.0314,
+    "longitude": 8.5584
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": null,
+    "Heading": "157.5\u00b0",
+    "ICAO24": "4cac84",
+    "Speed": "0.77 m/s",
+    "Time-pos": 1737651727,
+    "latitude": 52.368,
+    "longitude": 13.5073
+  },
+  {
+    "Destination": "Malta",
+    "Flight": "VJT237",
+    "Heading": "334.69\u00b0",
+    "ICAO24": "4d20d7",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651756,
+    "latitude": 47.4485,
+    "longitude": 8.551
+  },
+  {
+    "Destination": "Ireland",
+    "Flight": "SAS1555",
+    "Heading": "244.61\u00b0",
+    "ICAO24": "4cac79",
+    "Speed": "146.35 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.0145,
+    "longitude": 6.2191
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "LOT238",
+    "Heading": "83.48\u00b0",
+    "ICAO24": "489789",
+    "Speed": "240.25 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.1216,
+    "longitude": 14.4475
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "G958",
+    "Heading": "247.5\u00b0",
+    "ICAO24": "3c426b",
+    "Speed": "6.17 m/s",
+    "Time-pos": 1737651750,
+    "latitude": 52.3723,
+    "longitude": 13.5219
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DIPAG",
+    "Heading": "6.08\u00b0",
+    "ICAO24": "3e3eea",
+    "Speed": "160.38 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.0055,
+    "longitude": 8.5925
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH1PP",
+    "Heading": "174.38\u00b0",
+    "ICAO24": "3c4dd6",
+    "Speed": "7.46 m/s",
+    "Time-pos": 1737651543,
+    "latitude": 48.361,
+    "longitude": 11.7931
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH3LL",
+    "Heading": "155.22\u00b0",
+    "ICAO24": "3c4dca",
+    "Speed": "73.66 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.6732,
+    "longitude": 7.4713
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH7LX",
+    "Heading": "72.01\u00b0",
+    "ICAO24": "3c4dce",
+    "Speed": "146.58 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.662,
+    "longitude": 6.1502
+  },
+  {
+    "Destination": "Saudi Arabia",
+    "Flight": "SVA904",
+    "Heading": "140.98\u00b0",
+    "ICAO24": "710102",
+    "Speed": "258.23 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.6254,
+    "longitude": 10.2267
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH356",
+    "Heading": "4.72\u00b0",
+    "ICAO24": "3c4dc7",
+    "Speed": "187.38 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.4205,
+    "longitude": 9.1341
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EWG58W",
+    "Heading": "58.86\u00b0",
+    "ICAO24": "3c54a2",
+    "Speed": "198.95 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.5799,
+    "longitude": 8.9892
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DIBET",
+    "Heading": "255.94\u00b0",
+    "ICAO24": "3e1a67",
+    "Speed": "2.31 m/s",
+    "Time-pos": 1737651742,
+    "latitude": 52.3725,
+    "longitude": 13.5226
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR468E",
+    "Heading": "10.92\u00b0",
+    "ICAO24": "4b18b8",
+    "Speed": "236.29 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.9714,
+    "longitude": 9.6284
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "PGT81CM",
+    "Heading": "305.91\u00b0",
+    "ICAO24": "4bb842",
+    "Speed": "214.04 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.3452,
+    "longitude": 14.1883
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "EDW10B",
+    "Heading": "276.46\u00b0",
+    "ICAO24": "4b18f3",
+    "Speed": "82.32 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.4611,
+    "longitude": 8.5109
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "EUL3T",
+    "Heading": "106.38\u00b0",
+    "ICAO24": "3cf42d",
+    "Speed": "240.76 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.3509,
+    "longitude": 6.4921
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "HBJLA",
+    "Heading": "102.59\u00b0",
+    "ICAO24": "4b18e2",
+    "Speed": "108.59 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.3905,
+    "longitude": 8.6931
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DEDJR",
+    "Heading": "294.78\u00b0",
+    "ICAO24": "3d0d8f",
+    "Speed": "36.83 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.5273,
+    "longitude": 11.8928
+  },
+  {
+    "Destination": "Greece",
+    "Flight": "AEE604",
+    "Heading": "307.58\u00b0",
+    "ICAO24": "46b8b0",
+    "Speed": "208.37 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.7059,
+    "longitude": 6.9015
+  },
+  {
+    "Destination": "Greece",
+    "Flight": "AEE832",
+    "Heading": "315.47\u00b0",
+    "ICAO24": "46b8a2",
+    "Speed": "132.05 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.0982,
+    "longitude": 9.098
+  },
+  {
+    "Destination": "China",
+    "Flight": "CSG2578",
+    "Heading": "57.26\u00b0",
+    "ICAO24": "7807bb",
+    "Speed": "267.28 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.7068,
+    "longitude": 8.484
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "PBW11",
+    "Heading": "183.3\u00b0",
+    "ICAO24": "3dd794",
+    "Speed": "53.59 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.5733,
+    "longitude": 9.2227
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR161",
+    "Heading": "185.97\u00b0",
+    "ICAO24": "4b191f",
+    "Speed": "237.42 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.9622,
+    "longitude": 9.038
+  },
+  {
+    "Destination": "France",
+    "Flight": "AFR78LB",
+    "Heading": "233.57\u00b0",
+    "ICAO24": "398579",
+    "Speed": "161.13 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 51.0016,
+    "longitude": 5.8841
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "GSW2KP",
+    "Heading": "98.44\u00b0",
+    "ICAO24": "4b193a",
+    "Speed": "0 m/s",
+    "Time-pos": 1737651743,
+    "latitude": 47.4598,
+    "longitude": 8.5531
+  },
+  {
+    "Destination": "United Kingdom",
+    "Flight": "WUK7533",
+    "Heading": "298.18\u00b0",
+    "ICAO24": "407d5c",
+    "Speed": "212.44 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.7433,
+    "longitude": 14.0641
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "PBW15",
+    "Heading": "246.25\u00b0",
+    "ICAO24": "3dd798",
+    "Speed": "56.2 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.6809,
+    "longitude": 9.6357
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR33E",
+    "Heading": "42.19\u00b0",
+    "ICAO24": "4b194c",
+    "Speed": "3.34 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.4552,
+    "longitude": 8.5547
+  },
+  {
+    "Destination": "Poland",
+    "Flight": "RYR352G",
+    "Heading": "300.62\u00b0",
+    "ICAO24": "48c228",
+    "Speed": "205.04 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.4622,
+    "longitude": 11.5036
+  },
+  {
+    "Destination": "Turkey",
+    "Flight": "THY6600",
+    "Heading": "302.36\u00b0",
+    "ICAO24": "4b9c63",
+    "Speed": "184.54 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.2232,
+    "longitude": 10.9411
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "OCN325",
+    "Heading": "67.72\u00b0",
+    "ICAO24": "3c66e3",
+    "Speed": "218.48 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.7841,
+    "longitude": 10.3196
+  },
+  {
+    "Destination": "Greece",
+    "Flight": "AEE539",
+    "Heading": "148.91\u00b0",
+    "ICAO24": "4692c7",
+    "Speed": "239.09 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 48.9952,
+    "longitude": 6.7084
+  },
+  {
+    "Destination": "Panama",
+    "Flight": "HP1A",
+    "Heading": "173.26\u00b0",
+    "ICAO24": "0c204e",
+    "Speed": "113.97 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.4059,
+    "longitude": 8.4315
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH6NE",
+    "Heading": "59.13\u00b0",
+    "ICAO24": "3c66eb",
+    "Speed": "159.43 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 51.1148,
+    "longitude": 13.2822
+  },
+  {
+    "Destination": "Malta",
+    "Flight": "FJO68N",
+    "Heading": "32.32\u00b0",
+    "ICAO24": "4d203c",
+    "Speed": "238.63 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.0466,
+    "longitude": 12.2602
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "NGN901P",
+    "Heading": "301.56\u00b0",
+    "ICAO24": "3c79c5",
+    "Speed": "126.79 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.2659,
+    "longitude": 12.3212
+  },
+  {
+    "Destination": "Austria",
+    "Flight": "PEV106",
+    "Heading": "81.47\u00b0",
+    "ICAO24": "440570",
+    "Speed": "228.89 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.7075,
+    "longitude": 11.418
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "VJH824",
+    "Heading": "135.83\u00b0",
+    "ICAO24": "3c79c9",
+    "Speed": "176.45 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.8672,
+    "longitude": 13.574
+  },
+  {
+    "Destination": "Malta",
+    "Flight": "EWG9P",
+    "Heading": "357.19\u00b0",
+    "ICAO24": "4d2014",
+    "Speed": "2.06 m/s",
+    "Time-pos": 1737651758,
+    "latitude": 51.2945,
+    "longitude": 6.7857
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH3E",
+    "Heading": "154.36\u00b0",
+    "ICAO24": "3c66a8",
+    "Speed": "227.11 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 50.6383,
+    "longitude": 11.6967
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "DLH3MM",
+    "Heading": "140.24\u00b0",
+    "ICAO24": "3c66af",
+    "Speed": "75.62 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 50.8493,
+    "longitude": 7.174
+  },
+  {
+    "Destination": "Qatar",
+    "Flight": "QTR071",
+    "Heading": "304.98\u00b0",
+    "ICAO24": "06a0a7",
+    "Speed": "234.2 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 49.9067,
+    "longitude": 12.9738
+  },
+  {
+    "Destination": "Germany",
+    "Flight": "ARCTOS9",
+    "Heading": "15.7\u00b0",
+    "ICAO24": "3f6682",
+    "Speed": "150.16 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.4839,
+    "longitude": 9.3095
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR883W",
+    "Heading": "294.35\u00b0",
+    "ICAO24": "4b17e0",
+    "Speed": "202.15 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 47.535,
+    "longitude": 5.9531
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR8EV",
+    "Heading": "340.35\u00b0",
+    "ICAO24": "4b17df",
+    "Speed": "221.79 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 48.0921,
+    "longitude": 6.6964
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR421Q",
+    "Heading": "104.69\u00b0",
+    "ICAO24": "4b17fc",
+    "Speed": "231.34 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.3434,
+    "longitude": 10.4515
+  },
+  {
+    "Destination": "Kingdom of the Netherlands",
+    "Flight": "KLM1316",
+    "Heading": "280.83\u00b0",
+    "ICAO24": "484966",
+    "Speed": "216.32 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 52.5052,
+    "longitude": 14.7388
+  },
+  {
+    "Destination": "Spain",
+    "Flight": "FIN01AD",
+    "Heading": "219.1\u00b0",
+    "ICAO24": "342107",
+    "Speed": "208.82 m/s",
+    "Time-pos": 1737651763,
+    "latitude": 52.9623,
+    "longitude": 7.3461
+  },
+  {
+    "Destination": "France",
+    "Flight": "AFR94SP",
+    "Heading": "263.68\u00b0",
+    "ICAO24": "398571",
+    "Speed": "182.19 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 49.7578,
+    "longitude": 7.285
+  },
+  {
+    "Destination": "China",
+    "Flight": "CCA937",
+    "Heading": "235.37\u00b0",
+    "ICAO24": "7808cb",
+    "Speed": "218.19 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 53.6034,
+    "longitude": 7.1116
+  },
+  {
+    "Destination": "France",
+    "Flight": "DRAGO67",
+    "Heading": "151.19\u00b0",
+    "ICAO24": "3b7ba7",
+    "Speed": "11.74 m/s",
+    "Time-pos": 1737651761,
+    "latitude": 48.4514,
+    "longitude": 7.4082
+  },
+  {
+    "Destination": "Switzerland",
+    "Flight": "SWR189",
+    "Heading": "278.76\u00b0",
+    "ICAO24": "4b1904",
+    "Speed": "212.89 m/s",
+    "Time-pos": 1737651762,
+    "latitude": 47.521,
+    "longitude": 12.792
+  }
+]

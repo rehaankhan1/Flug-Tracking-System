@@ -118,7 +118,8 @@
         .timeline .progress .elapsed {
             height: 100%;
             background-color: #28a745;
-            width: 65%;
+            width: 0%;
+            transition: width 0.5s ease;
         }
 
         .timeline .labels {
@@ -201,6 +202,14 @@
 <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script>
 
+mapboxgl.accessToken = 'pk.eyJ1IjoibGV2ZWw5bmluZSIsImEiOiJjbHgxMGliczUwNzBkMmlxcHY5eGl3NXVuIn0.U42ZWqijRx_UDu-ciiBZmw';
+const map = new mapboxgl.Map({
+    container: 'map1',
+    style: 'mapbox://styles/level9nine/clxdqm3b8001j01pc3ekp0phz',
+    projection: 'globe',
+    bearing: 0,
+    pitch: 10,
+});
 
 
 function calculateArrivalTime(utcTimeString) {
@@ -309,18 +318,50 @@ function totalTimeDifference(utcTime1, utcTime2) {
 }
 
 
+function calculateTimePercentage(startTimeUTC, endTimeUTC) {
+  // Parse the input UTC time strings into Date objects
+  const startTime = new Date(startTimeUTC);
+  const endTime = new Date(endTimeUTC);
+  const currentTime = new Date(); // Get the current time
+
+  // Check if the input times are valid
+  if (isNaN(startTime.getTime()) || isNaN(endTime.getTime())) {
+    throw new Error("Invalid time format. Please provide valid UTC strings.");
+  }
+
+  // Check if the current time is within the range
+  if (currentTime < startTime) {
+    return 0; // Time hasn't started yet
+  }
+  if (currentTime > endTime) {
+    return 100; // Time is already completed
+  }
+
+  // Calculate the total time duration and elapsed time
+  const totalDuration = endTime - startTime; // Total duration in milliseconds
+  const elapsedTime = currentTime - startTime; // Elapsed time in milliseconds
+
+  // Calculate the percentage
+  const percentageCompleted = (elapsedTime / totalDuration) * 100;
+
+  // Return the percentage (rounded to 2 decimal places)
+  return Math.min(100, Math.max(0, percentageCompleted.toFixed(2))) + "%";
+}
+
+
 
             function getFlightDetails() {
-            d3.json(`/getFlightData?flightNum=${icao24}`, (err, data) => {
+            d3.json(`/getFlightData?flightNum=${flightNum}`, (err, data) => {
             if (err) {
             console.error("Error fetching flight data:", err);
             return;
             }
             
     let selectedData;
-    for(let i=10;i>=0;i--){
+    for(let i=100;i>=0;i--){
         if(data[i]){
             selectedData = data[i];
+            console.log(i)
             break;
         }
     }
@@ -334,6 +375,18 @@ function totalTimeDifference(utcTime1, utcTime2) {
     // }
     console.log(selectedData)
            
+     // Coordinates for the pinpoint
+                const dep_latitude = 50.6374; // Example latitude
+                const dep_longitude = 5.44322; // Example longitude
+
+                // Add a marker at the specified coordinates
+                new mapboxgl.Marker()
+                .setLngLat([selectedData.arrival.airport.location.lon, selectedData.arrival.airport.location.lat]) // Note: Longitude comes before latitude
+                .addTo(map);
+
+                new mapboxgl.Marker()
+                .setLngLat([selectedData.departure.airport.location.lon, selectedData.departure.airport.location.lat]) // Note: Longitude comes before latitude
+                .addTo(map);
 
             // FLIGHT STATUS
             document.querySelector('.status').textContent=selectedData.status.toUpperCase();
@@ -378,6 +431,15 @@ function totalTimeDifference(utcTime1, utcTime2) {
             console.log(calculateElapsedTime(departureTimeUTC));
             document.querySelector('.elapsed_time').textContent=calculateElapsedTime(departureTimeUTC);
             document.querySelector('.total_time_diff').textContent=totalTimeDifference(departureTimeUTC, arrivalTimeUTC);
+
+            //CALCULATING PROGRESS
+            const elapsed = document.querySelector('.elapsed');
+
+            // Set progress to 30% with animation
+            setTimeout(() => {
+              elapsed.style.width = calculateTimePercentage(departureTimeUTC, arrivalTimeUTC);
+            }, 6000); 
+            console.log(calculateTimePercentage(departureTimeUTC, arrivalTimeUTC))
 
             //UPDATING WEATHER
             document.querySelector('.temperature').innerHTML = "<strong>Temperature:</strong> " + getQueryParam('temperature') + "°C";
@@ -438,14 +500,7 @@ function getQueryParam(param) {
     return urlParams.get(param);
 }
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibGV2ZWw5bmluZSIsImEiOiJjbHgxMGliczUwNzBkMmlxcHY5eGl3NXVuIn0.U42ZWqijRx_UDu-ciiBZmw';
-const map = new mapboxgl.Map({
-    container: 'map1',
-    style: 'mapbox://styles/level9nine/clxdqm3b8001j01pc3ekp0phz',
-    projection: 'globe',
-    bearing: 0,
-    pitch: 10,
-});
+
 
 // Get 'icao24' parameter from URL
 const icao24 = getQueryParam('icao24');
@@ -482,6 +537,8 @@ if (icao24) {
                 }
 
                 if (err) throw err;
+
+               
 
                 // Convert the loaded data to GeoJSON format
                 data = convertToGeoJSON(data);
@@ -570,7 +627,7 @@ if (icao24) {
         getFlightDetails();
 
         // Update data every 5 seconds
-        setInterval(updateMapData, 30000);
+        setInterval(updateMapData, 3000);
     });
 } else {
     // Show an alert if icao24 is missing

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Mapbox GL JS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
+    <meta charset="utf-8" />
+    <title>Mapbox Heatmap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6.5.0/turf.min.js"></script>
     <style>
         body { margin: 0; padding: 0; }
@@ -35,22 +35,29 @@
 <body>
     <div id="map"></div>
     <script>
+
+
+                // Fetch weather data for each city
+                const weatherApiKey = '1df29cdb2c33d3a23fe6c74e8fcaaac8';
+                async function fetchWeather(lat, long) {
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${weatherApiKey}`;
+            const response = await fetch(url);
+            return response.json();
+        }
+
+        // Replace 'YOUR_MAPBOX_ACCESS_TOKEN' with your Mapbox access token
         mapboxgl.accessToken = 'pk.eyJ1IjoibGV2ZWw5bmluZSIsImEiOiJjbHgxMGliczUwNzBkMmlxcHY5eGl3NXVuIn0.U42ZWqijRx_UDu-ciiBZmw';
+
+        // Initialize the map
         const map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/level9nine/clxdqm3b8001j01pc3ekp0phz',
-            zoom: 1,
-            center: [13.5020, 52.3667], // Centered to show the world map
+            center: [0, 0],
+            zoom: 2,
+            maxZoom: 20,
+            minZoom: 0,
             projection: 'globe',
-            bearing: 0, // Start with no rotation
             pitch: 10, // Tilt the view to simulate a globe
-        });
-
-                // Your OpenWeatherMap API Key
-                const weatherApiKey = '1df29cdb2c33d3a23fe6c74e8fcaaac8';
-
-        map.on('style.load', () => {
-            map.setFog({}); // Set the default atmosphere style
         });
 
         let spinEnabled = true;
@@ -101,111 +108,87 @@
         map.on('dragend', onInteractionEnd);
         map.on('zoomend', onInteractionEnd);
 
-        // Fetch flight data from the Flask backend
-        async function fetchFlightData() {
-            try {
-                const response = await fetch('/all-flights11');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const flightData = await response.json();
-                console.log("Fetched flight data:", flightData); // Log the fetched data
-                return flightData;
-            } catch (error) {
-                console.error("Error fetching flight data:", error);
-            }
-        }
+        // Function to calculate bearing
+        const calculateBearing = (prevLat, prevLng, currLat, currLng) => {
+            const toRadians = (deg) => (deg * Math.PI) / 180;
+            const toDegrees = (rad) => (rad * 180) / Math.PI;
 
-        // Fetch weather data for each city
-        async function fetchWeather(lat, long) {
-            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=${weatherApiKey}`;
-            const response = await fetch(url);
-            return response.json();
-        }
+            const deltaLng = toRadians(currLng - prevLng);
+            const y = Math.sin(deltaLng) * Math.cos(toRadians(currLat));
+            const x =
+                Math.cos(toRadians(prevLat)) * Math.sin(toRadians(currLat)) -
+                Math.sin(toRadians(prevLat)) * Math.cos(toRadians(currLat)) * Math.cos(deltaLng);
 
-
-async function updateFlights() {
-    try {
-        const flightData = await fetchFlightData();
-        if (flightData && Array.isArray(flightData)) {
-            flightData.forEach((flight, index) => {
-                const departureLatLng = [139.781113, 35.553333]; // Example departure coordinates
-                const aircraftLatLng = [flight.longitude, flight.latitude];
-                drawRoute(index, departureLatLng, aircraftLatLng, flight);
-            });
-        } else {
-            console.error("Invalid flight data:", flightData);
-        }
-    } catch (error) {
-        console.error("Error updating flights:", error);
-    }
-}
-
-function drawRoute(index, origin, destination, flight) {
-    try {
-        const heading = parseFloat(flight.Heading.replace("°", "")); // Convert heading to a numeric value
-        const point = {
-            type: 'FeatureCollection',
-            features: [
-                {
-                    type: 'Feature',
-                    properties: {
-                        heading, // Store heading as a property
-                        flight: JSON.stringify(flight), // Store flight information as a string
-                    },
-                    geometry: {
-                        type: 'Point',
-                        coordinates: destination,
-                    },
-                },
-            ],
+            return (toDegrees(Math.atan2(y, x)) + 360) % 360; // Normalize to 0-360 degrees
         };
 
-        const route = {
-            type: 'FeatureCollection',
-            features: [
-                {
-                    type: 'Feature',
-                    geometry: {
-                        type: 'LineString',
-                        coordinates: [origin, destination],
-                    },
-                },
-            ],
-        };
+        // Transform static JSON into GeoJSON
+        const transformToGeoJSON = (data) => ({
+            type: "FeatureCollection",
+            features: data
+                .filter(item => item.longitude && item.latitude) // Validate coordinates
+                .map(item => {
+                    // Calculate bearing if previous position is available
+                    const bearing = calculateBearing(35.553333, 139.781113, item.latitude, item.longitude); // Default bearing if no previous position
 
-        // Update or add the point source
-        if (map.getSource(`point${index}`)) {
-            map.getSource(`point${index}`).setData(point);
-        } else {
-            map.addSource(`point${index}`, {
-                type: 'geojson',
-                data: point,
-                clusterMaxZoom: 4,
-                clusterRadius: 20
-            });
+                    return {
+                        type: "Feature",
+                        geometry: {
+                            type: "Point",
+                            coordinates: [item.longitude, item.latitude],
+                        },
+                        properties: {
+                            Destination: item.Destination,
+                            Flight: item.Flight,
+                            Heading: parseFloat(item.Heading.replace("°", "")), // Use calculated bearing for rotation
+                            ICAO24: item.ICAO24,
+                            Speed: item.Speed || 0,
+                            "Time-pos": item["Time-pos"],
+                        },
+                    };
+                }),
+        });
 
-            map.addLayer({
-                id: `point${index}`,
-                source: `point${index}`,
-                type: 'symbol',
-                layout: {
+        // Load the static JSON file and add it to the map
+        map.on('load', () => {
+            const apiUrl = 'http://127.0.0.1:5000/get-heatmap-data';
+            
+            fetch(apiUrl)
+                .then((response) => {
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return response.json();
+                })
+                .then((rawData) => {
+                    const geojson = transformToGeoJSON(rawData);
+
+                    // Add the GeoJSON data as a source
+                    map.addSource('points', {
+                        type: 'geojson',
+                        data: geojson,
+                    });
+
+                  
+                    // Add a point layer for interactivity
+                    map.addLayer({
+                        id: 'points-layer',
+                        type: 'symbol',
+                        source: 'points',
+                        layout: {
                     'icon-image': 'airport-9',
                     'icon-size': 1.2,
-                    'icon-rotate': ['get', 'heading'], // Use the heading property for rotation
+                    'icon-rotate': ['get', 'Heading'], // Use the heading property for rotation
                     'icon-rotation-alignment': 'map',
                     'icon-allow-overlap': true,
                     'icon-ignore-placement': true,
                 },
-            });
+                    });
 
-           map.on('click', `point${index}`, async (e) => {
-                const coordinates = e.features[0].geometry.coordinates.slice();
-                console.log(e.features[0]);
-                const flightInfo = JSON.parse(e.features[0].properties.flight);
-                const weatherData = await fetchWeather(coordinates[1], coordinates[0]);
-                console.log(weatherData);
-                const description = `
+                    // Add popup on point click
+                    map.on('click', 'points-layer', async (e) => {
+                        const properties = e.features[0].properties;
+                        const coordinates = e.features[0].geometry.coordinates.slice();
+                        const weatherData = await fetchWeather(coordinates[1], coordinates[0]);
+                        const description = `
     <div style="
         background: linear-gradient(135deg, #4a4a4a, #1e1e1e); 
         color: #f9f9f9; 
@@ -220,8 +203,8 @@ function drawRoute(index, origin, destination, flight) {
         height: 190px; /* Adjusted height to fit the link */
         overflow: hidden;">
         <h3 style="margin: 0 0 10px; font-size: 1.2em; color: #ffd700;">✈ Flight Information</h3>
-        <strong>Flight:</strong> ${flightInfo.Flight}<br>
-        <strong>Destination:</strong> ${flightInfo.Destination}<br>
+        <strong>Flight:</strong> ${properties.Flight}<br>
+        <strong>Destination:</strong> ${properties.Destination}<br>
         <strong>Temperature:</strong> ${weatherData.main.temp}°C<br>
         <strong>Weather:</strong>
         <span style="display: inline-flex; align-items: center;">
@@ -254,7 +237,7 @@ function drawRoute(index, origin, destination, flight) {
         </div>
         <!-- Add the link at the bottom -->
         <div style="position: absolute; bottom: 10px; left: 15px;">
-            <a href="http://127.0.0.1:5000/live-route-weather?icao24=${flightInfo.ICAO24}&destination=${flightInfo.Destination}&flightNum=${flightInfo.Flight}&temperature=${weatherData.main.temp}&weatherDescription=${weatherData.weather[0].description}&weathericon=${weatherData.weather[0].icon}&humidity=${weatherData.main.humidity}" target="_blank" style="
+            <a href="http://127.0.0.1:5000/live-route-weather?icao24=${properties.ICAO24}&destination=${properties.Destination}&flightNum=${properties.Flight}&temperature=${weatherData.main.temp}&weatherDescription=${weatherData.weather[0].description}&weathericon=${weatherData.weather[0].icon}&humidity=${weatherData.main.humidity}" target="_blank" style="
                 color: #ffd700; 
                 text-decoration: none; 
                 font-weight: bold; 
@@ -270,37 +253,28 @@ function drawRoute(index, origin, destination, flight) {
     </div>`;
 
 
-                new mapboxgl.Popup({ closeButton: false })
+    new mapboxgl.Popup({ closeButton: false })
                     .setLngLat(coordinates)
                     .setHTML(description)
                     .addTo(map);
             });
-        }
 
-        // Update or add the route source
-        if (map.getSource(`route${index}`)) {
-            map.getSource(`route${index}`).setData(route);
-        } else {
-            map.addSource(`route${index}`, {
-                type: 'geojson',
-                data: route,
-            });
 
-        }
-    } catch (error) {
-        console.error(`Error drawing route for index ${index}:`, error);
-    }
-}
+                    
 
-        
+                    // Change the cursor to a pointer when hovering over points
+                    map.on('mouseenter', 'points-layer', () => {
+                        map.getCanvas().style.cursor = 'pointer';
+                    });
+                    map.on('mouseleave', 'points-layer', () => {
+                        map.getCanvas().style.cursor = '';
+                    });
+                })
+                .catch((error) => console.error('Error loading data:', error));
 
-        map.on('load', () => {
-            updateFlights(); // Initial flight data fetch
-            setInterval(updateFlights, 30000); // Update every 5 minute
-        });
-
-        // Start spinning the globe
+                // Start spinning the globe
         spinGlobe();
+        });
     </script>
 </body>
 </html>

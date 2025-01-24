@@ -14,7 +14,7 @@ load_dotenv()
 
 #aerodatabox API https://api.market/store/aedbx/aerodatabox
 API_KEY = "cm62zddhp0002l5031daxspwm"
-BASE_URL = "https://api.magicapi.dev/api/v1/aedbx/aerodatabox/flights/Icao24/"
+BASE_URL = "https://api.magicapi.dev/api/v1/aedbx/aerodatabox/flights/Number/"
 
 # Access the variable
 credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
@@ -36,11 +36,91 @@ redis_client = redis.StrictRedis(
 
 
 EUROPE_AREA = {
-  "lamin": 35.0,       
-  "lomin": -10.0,      
-  "lamax": 71.0,       
-  "lomax": 40.0          
+   "lamin": 47.270111,  
+  "lomin": 5.866342,   
+  "lamax": 55.058347,  
+  "lomax": 15.041896   
 }
+
+WORLD_AREA = {
+ "lamin": -90.0,  
+  "lomin": -180.0, 
+  "lamax": 90.0,   
+  "lomax": 180.0   
+}
+
+
+
+
+def fetch_and_store_flights_world():
+    username = 'likeaman21'
+    password = 'mardhotoayesa21#'
+
+    headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+    }
+
+    while True:
+        try:
+            # Fetch flights from the OpenSky API with authentication
+            response = requests.get('https://opensky-network.org/api/states/all', params={
+                'lamin': WORLD_AREA['lamin'],
+                'lomin': WORLD_AREA['lomin'],
+                'lamax': WORLD_AREA['lamax'],
+                'lomax': WORLD_AREA['lomax']
+            }, 
+            auth=(username, password),  # Adding basic auth
+            headers=headers
+            )
+            response.raise_for_status()  # Raise an error for bad responses
+            flights = response.json().get('states', [])
+
+            if flights:
+                all_flight_data = []  # List to store each flight's data
+
+                for flight in flights:
+                    # Unpack the relevant flight data
+                    icao24 = flight[0]
+                    timepos = flight[3]
+                    destination = flight[2]
+                    callsign = flight[1].strip() if flight[1] else None
+                    longitude = flight[5]
+                    latitude = flight[6]
+                    velocity = flight[9] if len(flight) > 9 else None
+                    heading = flight[10] if len(flight) > 10 else None
+
+                    # Create a dictionary for the flight data
+                    flight_data = {
+                        "Flight": callsign,
+                        "Time-pos": timepos,
+                        "ICAO24": icao24,
+                        "Destination": destination,
+                        "latitude": latitude,
+                        "longitude": longitude,
+                        "Speed": f"{velocity} m/s" if velocity is not None else None,
+                        "Heading": f"{heading}°" if heading is not None else None
+                    }
+
+                    # Append each flight's data to the list                   
+                    all_flight_data.append(flight_data)
+                    
+
+                # Store the flight data in Redis
+                redis_client.set('flights_data_world', str(all_flight_data))
+
+            # Wait for 60 seconds before fetching again
+            time.sleep(200000)
+
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching flights: {str(e)}")
+            time.sleep(300)  
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+            time.sleep(300)  
+
+
+
+
 
 def fetch_and_store_flights():
     username = 'likeaman21'
@@ -99,7 +179,7 @@ def fetch_and_store_flights():
                 redis_client.set('flights_data', str(all_flight_data))
 
             # Wait for 60 seconds before fetching again
-            time.sleep(6000)
+            time.sleep(200)
 
         except requests.exceptions.RequestException as e:
             print(f"Error fetching flights: {str(e)}")
@@ -110,6 +190,7 @@ def fetch_and_store_flights():
 
 # Start the background thread
 threading.Thread(target=fetch_and_store_flights, daemon=True).start()
+threading.Thread(target=fetch_and_store_flights_world, daemon=True).start()
 
 
 
@@ -134,7 +215,23 @@ def get_track():
     except requests.RequestException as e:
         # Handle any errors from the OpenSky API request
         return jsonify({"error": str(e)}), 500
+
+
+@app.route('/get-heatmap-data', methods=['GET'])
+def get_flights_to_world():
+    try:
+        flight_data = redis_client.get('flights_data_world')
+        if flight_data is None:
+            return jsonify({"message": "No flight data available."}), 404
         
+        # Convert the string back to a list
+        all_flight_data = eval(flight_data)  # Caution: Using eval can be risky. Consider using json.loads() instead.
+        
+        return jsonify(all_flight_data), 200
+
+    except Exception as e:
+        return jsonify({"error": f"Error fetching flight data: {str(e)}"}), 300000
+       
 
 @app.route('/all-flights11', methods=['GET'])
 def get_flights_to_frankfurt():
@@ -245,6 +342,14 @@ def index5():
 @app.route('/predict')
 def index6():
     return render_template('historical_data.html') 
+
+@app.route('/live-test')
+def index7():
+    return render_template('live-route-weather.html') 
+
+@app.route('/live-data')
+def index8():
+    return render_template('real-time-data.html') 
 
 
 if __name__ == '__main__':
