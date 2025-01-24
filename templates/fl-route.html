@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Update a feature in real-time</title>
+        <title>Trajectory</title>
         <meta property="og:description" content="Change an existing feature on your map in real-time by updating its data." />
         <meta charset='utf-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -120,7 +120,7 @@ map.on('load', () => {
         });
  
         // Setup the viewport
-        map.jumpTo({ 'center': coordinates[0], 'zoom': 14 });
+        map.jumpTo({ 'center': coordinates[0], 'zoom': 6 });
         map.setPitch(30);
  
         // Add more coordinates from the saved list and update the map at intervals

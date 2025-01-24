@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flight Query</title>
+  <title>Flight Prediction</title>
   <style>
     /* General Styling */
     body {
@@ -232,6 +232,7 @@
         if (result.message && result.message.length > 0) {
           const prediction = result.message[0].predicted_is_delayed;
           const status = prediction === 1 ? 'delayed' : 'on Time';
+          console.log(result)
           showModal('Flight Prediction', `The flight is ${status}`);
         } else {
           showModal('No Data', 'No prediction data found for the provided flight and airline.');

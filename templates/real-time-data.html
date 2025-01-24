@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Mapbox Heatmap</title>
+    <title>Live Data</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet" />
@@ -200,10 +200,11 @@
         transform: scale(1.05); /* Always show scaled version */
         position: relative; 
         width: 175px; /* Fixed width */
-        height: 190px; /* Adjusted height to fit the link */
+        height: 200px; /* Adjusted height to fit the link */
         overflow: hidden;">
         <h3 style="margin: 0 0 10px; font-size: 1.2em; color: #ffd700;">✈ Flight Information</h3>
         <strong>Flight:</strong> ${properties.Flight}<br>
+        <strong>ICAO24:</strong> ${properties.ICAO24}<br>
         <strong>Destination:</strong> ${properties.Destination}<br>
         <strong>Temperature:</strong> ${weatherData.main.temp}°C<br>
         <strong>Weather:</strong>

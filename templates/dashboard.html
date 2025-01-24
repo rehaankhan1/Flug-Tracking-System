@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        header {
+            background-color: rgba(0, 51, 102, 0.9);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        header nav {
+            margin-top: 1rem;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 16px;
+            background-color: #00509e;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        header nav a:hover {
+            background-color: #003366;
+        }
+        main {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .card {
+            background-color: white;
+            margin: 0 auto;
+            padding: 2rem;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: rgba(0, 51, 102, 0.9);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <header>
+        <h1>Airline Explorer</h1>
+        <nav>
+            <a href="/live-data" target="_blank">Live Flights</a>
+            <a href="/live-test" target="_blank">Heatmap</a>
+            <a href="/trajectory" target="_blank">Live Trajectory</a>
+            <a href="/predict" target="_blank">Flight Prediction(FRA)</a>
+        </nav>
+    </header>
+    <main>
+        
+    </main>
+
+
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoibGV2ZWw5bmluZSIsImEiOiJjbHgxMGliczUwNzBkMmlxcHY5eGl3NXVuIn0.U42ZWqijRx_UDu-ciiBZmw';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/outdoors-v12',
+            center: [0, 0],
+            zoom: 2.1,
+            projection: 'globe',
+            bearing: 0, // Start with no rotation
+            pitch: 12, // Tilt the view to simulate a globe
+        });
+        map.on('style.load', () => {
+            map.setFog({});
+        });
+
+        let spinEnabled = true;
+        let userInteracting = false;
+        const maxSpinZoom = 5;
+        const slowSpinZoom = 3;
+        const secondsPerRevolution = 20;
+        let lastInteractionTime = Date.now();
+        const interactionTimeout = 0; // 3 seconds of no interaction to resume spinning
+
+        function spinGlobe() {
+            const now = Date.now();
+            if (spinEnabled && !userInteracting && (now - lastInteractionTime > interactionTimeout)) {
+                const zoom = map.getZoom();
+                if (zoom < maxSpinZoom) {
+                    let distancePerSecond = 360 / secondsPerRevolution;
+                    if (zoom > slowSpinZoom) {
+                        // Slow spinning at higher zooms
+                        const zoomDif = (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom);
+                        distancePerSecond *= zoomDif;
+                    }
+                    const center = map.getCenter();
+                    center.lng -= distancePerSecond / 60; // divide by 60 to get per-frame movement
+                    map.setCenter(center);
+                }
+            }
+            // Schedule the next frame.
+            requestAnimationFrame(spinGlobe);
+        }
+
+        // Array of locations [longitude, latitude]
+        const locations = [
+    [-74.006, 40.7128], // New York City
+    [2.3522, 48.8566], // Paris
+    [13.405, 52.52], // Berlin
+    [139.6917, 35.6895], // Tokyo
+    [151.2093, -33.8688], // Sydney
+    [-0.1276, 51.5074], // London
+    [144.9631, -37.8136], // Melbourne
+    [55.2962, 25.276987], // Dubai
+    [77.1025, 28.7041], // New Delhi
+    [103.851959, 1.29027], // Singapore
+    [116.4074, 39.9042], // Beijing
+    [28.9784, 41.0082], // Istanbul
+    [-46.6333, -23.5505], // São Paulo
+    [-43.1729, -22.9068], // Rio de Janeiro
+    [-79.3832, 43.6532], // Toronto
+    [-123.1216, 49.2827], // Vancouver
+    [-3.7038, 40.4168], // Madrid
+    [12.4964, 41.9028], // Rome
+    [24.9384, 60.1695], // Helsinki
+    [19.0402, 47.4979], // Budapest
+    [37.6173, 55.7558], // Moscow
+    [114.1694, 22.3193], // Hong Kong
+    [135.5022, 34.6937], // Osaka
+    [31.2357, 30.0444], // Cairo
+    [74.3587, 31.5204], // Lahore
+    [-58.3816, -34.6037], // Buenos Aires
+    [18.4241, -33.9249], // Cape Town
+    [28.0473, -26.2041], // Johannesburg
+    [100.5018, 13.7563], // Bangkok
+    [106.865, -6.1751], // Jakarta
+    [121.4737, 31.2304], // Shanghai
+    [126.978, 37.5665], // Seoul
+    [139.6503, 35.6762], // Yokohama
+    [55.2744, -21.1146], // Saint-Denis (Reunion)
+    [115.8575, -31.9505], // Perth
+    [174.7633, -36.8485], // Auckland
+    [9.19, 45.4642], // Milan
+    [18.0686, 59.3293], // Stockholm
+    [-1.2577, 51.752], // Oxford
+    [-0.118092, 51.509865], // London (Alternative point)
+    [34.7818, 32.0853], // Tel Aviv
+    [100.3327, 5.4149], // George Town, Malaysia
+    [-123.3656, 48.4284], // Victoria, Canada
+    [135.7681, 35.0116], // Kyoto
+    [49.0069, 55.7963], // Kazan
+    [49.8951, -97.1384], // Winnipeg
+    [105.8412, 21.0285], // Hanoi
+    [78.4867, 17.385], // Hyderabad
+    [144.2836, -38.1436], // Geelong, Australia
+    [4.3517, 50.8503], // Brussels
+    [-84.387982, 33.748995], // Atlanta
+    [-81.6944, 41.4993], // Cleveland
+    [88.3639, 22.5726], // Kolkata
+    [121.774, 12.8797], // Manila
+    [36.8219, -1.2921], // Nairobi
+    [-71.0589, 42.3601], // Boston
+    [-97.7431, 30.2672], // Austin
+    [-77.0369, 38.9072], // Washington D.C.
+    [72.8777, 19.076], // Mumbai
+    [-95.3698, 29.7604], // Houston
+    [-90.1994, 38.627], // St. Louis
+    [28.2639, -15.3875], // Lusaka
+    [-123.0867, 44.0521], // Eugene, Oregon
+    [-8.611, 41.1496], // Porto
+    [-96.7969, 32.7767], // Dallas
+    [18.0711, 59.3146], // Gothenburg
+    [30.3351, 59.9343], // St. Petersburg, Russia
+    [90.4125, 23.8103], // Dhaka
+    [36.2706, 49.9935], // Kharkiv
+    [129.0756, 35.1796], // Busan
+    [-3.1883, 55.9533], // Edinburgh
+    [-104.9903, 39.7392], // Denver
+    [-80.1918, 25.7617], // Miami
+    [44.3615, 33.3128], // Baghdad
+    [3.7038, 36.7372], // Algiers
+    [8.6821, 50.1109], // Frankfurt
+    [4.9041, 52.3676], // Amsterdam
+    [-79.9559, 32.7765], // Charleston, USA
+    [30.5234, 50.4501], // Kyiv
+    [-74.006, 41.1781], // Kingston, USA
+    [19.6961, 41.3275], // Tirana
+    [35.2433, 31.7683], // Jerusalem
+    [49.422, 26.2245], // Dammam
+    [13.4105, 52.5201], // Potsdam
+    [-77.0428, -12.0464], // Lima
+    [-79.4697, 8.9824], // Panama City
+    [-61.416, 10.6604], // Port of Spain
+    [106.8265, -6.2015], // Depok, Indonesia
+    [47.5769, 32.8705], // Karbala, Iraq
+    [114.1605, 22.3765], // Sha Tin, Hong Kong
+    [100.9155, 5.3852], // Alor Setar, Malaysia
+];
+
+
+    // Function to zoom to a location in a loop
+    async function zoomToLocations() {
+        while(true){
+            for (let i = 0; i < locations.length; i++) {
+            const [longitude, latitude] = locations[i];
+
+            // Fly to the current location
+            map.flyTo({
+                center: [longitude, latitude],
+                zoom: 5.2,
+                essential: true
+            });
+
+            // Add a marker at the current location
+            new mapboxgl.Marker()
+                .setLngLat([longitude, latitude])
+                .addTo(map);
+
+            // Wait 3 seconds before moving to the next location
+            await new Promise(resolve => setTimeout(resolve, 3000));
+        }
+   
+        }
+     }
+
+    // Start the loop after the map is loaded
+    map.on('load', () => {
+        zoomToLocations();
+    });
+
+      //  spinGlobe();
+    </script>
+</body>
+</html>

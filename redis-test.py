@@ -11,13 +11,14 @@ app = Flask(__name__)
 
 # Load environment variables from .env file
 load_dotenv()
+# export GOOGLE_APPLICATION_CREDENTIALS="C:\Users\Admin\Documents\Flug-system\route\static\flightmodelfra-a6ceade8480e.json"
 
 #aerodatabox API https://api.market/store/aedbx/aerodatabox
-API_KEY = "cm62zddhp0002l5031daxspwm"
+API_KEY = "cm6b983hu0003jv03lg3eb62a"
 BASE_URL = "https://api.magicapi.dev/api/v1/aedbx/aerodatabox/flights/Number/"
 
 # Access the variable
-credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS1')
 print(f"Using credentials from: {credentials_path}")
 
 # redis-14349.c11.us-east-1-2.ec2.redns.redis-cloud.com:14349
@@ -350,6 +351,14 @@ def index7():
 @app.route('/live-data')
 def index8():
     return render_template('real-time-data.html') 
+
+@app.route('/dashboard')
+def index9():
+    return render_template('dashboard.html') 
+
+@app.route('/trajectory')
+def index10():
+    return render_template('trajectory.html') 
 
 
 if __name__ == '__main__':
