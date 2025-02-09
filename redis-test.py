@@ -1,13 +1,42 @@
 from flask import Flask, jsonify, request, render_template
+from selenium import webdriver
+from collections import OrderedDict
+from datetime import datetime
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from webdriver_manager.chrome import ChromeDriverManager
 import requests
 import redis
 import threading
 import time
+import json
 from google.cloud import bigquery
 from dotenv import load_dotenv
 import os
+import joblib
+import pickle
+import pandas as pd
+
+# import sklearn
+# print(sklearn.__version__)  # Check the installed version
+
+
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = True  # 👈 Critical configuration change
+
+# import joblib
+
+# try:
+#     model = joblib.load("best_model.pkl", mmap_mode="r")  # Try loading with memory mapping
+#     print("Model loaded successfully:", type(model))
+# except Exception as e:
+#     print("Error loading model:", str(e))
+
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -36,6 +65,60 @@ redis_client = redis.StrictRedis(
 
 
 
+# ✅ Load trained ML model using pickle
+try:
+    with open("best_model.pkl", "rb") as file:
+        model = pickle.load(file)
+
+    if not hasattr(model, "predict"):
+        raise TypeError("Loaded model does not have a 'predict' method. Ensure 'best_model.pkl' is a trained model!")
+
+    print("✅ Model loaded successfully:", type(model))
+
+except Exception as e:
+    print("❌ Error loading model:", str(e))
+    model = None
+
+# ✅ Load categorical encoders using pickle
+try:
+    with open("encoder_model.pkl", "rb") as file:
+        encoders = pickle.load(file)
+
+    if not isinstance(encoders, dict) or len(encoders) == 0:
+        raise ValueError("Encoders dictionary is empty or invalid!")
+
+    print("✅ Encoders loaded successfully!")
+    print("Available encoders:", list(encoders.keys()))
+
+except Exception as e:
+    print("❌ Error loading encoders:", str(e))
+    encoders = None
+
+
+### **Helper Function to Encode New Input**
+def encode_new_input(data):
+    """
+    Encodes categorical inputs using saved encoders.
+    Returns encoded data and an error message if an unknown category is encountered.
+    """
+    if encoders is None:
+        return None, "❌ Error: Encoders not loaded."
+
+    encoded_data = {}
+
+    for col, encoder in encoders.items():
+        if col in data:
+            try:
+                encoded_data[col] = encoder.transform([data[col]])[0]  # Encode value
+            except ValueError:
+                return None, f"❌ Error: Unknown category '{data[col]}' for '{col}'. Please provide a valid category."
+        else:
+            return None, f"❌ Error: Missing required field '{col}'."
+
+    return encoded_data, None  # No errors
+
+
+
 EUROPE_AREA = {
    "lamin": 47.270111,  
   "lomin": 5.866342,   
@@ -49,6 +132,14 @@ WORLD_AREA = {
   "lamax": 90.0,   
   "lomax": 180.0   
 }
+
+def time_difference(time1: str, time2: str) -> float:
+    format_str = "%H:%M"
+    t1 = datetime.strptime(time1, format_str)
+    t2 = datetime.strptime(time2, format_str)
+    
+    diff = abs(t1 - t2)
+    return "{:.1f}".format(float(diff.seconds / 60))  # Return difference in minutes as float
 
 
 
@@ -118,10 +209,6 @@ def fetch_and_store_flights_world():
         except Exception as e:
             print(f"An error occurred: {str(e)}")
             time.sleep(300)  
-
-
-
-
 
 def fetch_and_store_flights():
     username = 'likeaman21'
@@ -193,8 +280,6 @@ def fetch_and_store_flights():
 threading.Thread(target=fetch_and_store_flights, daemon=True).start()
 threading.Thread(target=fetch_and_store_flights_world, daemon=True).start()
 
-
-
 @app.route('/track', methods=['GET'])
 def get_track():
     # Get the icao24 parameter from the user
@@ -217,7 +302,6 @@ def get_track():
         # Handle any errors from the OpenSky API request
         return jsonify({"error": str(e)}), 500
 
-
 @app.route('/get-heatmap-data', methods=['GET'])
 def get_flights_to_world():
     try:
@@ -233,7 +317,6 @@ def get_flights_to_world():
     except Exception as e:
         return jsonify({"error": f"Error fetching flight data: {str(e)}"}), 300000
        
-
 @app.route('/all-flights11', methods=['GET'])
 def get_flights_to_frankfurt():
     try:
@@ -249,7 +332,6 @@ def get_flights_to_frankfurt():
     except Exception as e:
         return jsonify({"error": f"Error fetching flight data: {str(e)}"}), 300000
 
-# Endpoint to handle flight query
 @app.route('/makeprediction', methods=['POST'])
 def query():
     try:
@@ -295,10 +377,11 @@ def query():
     except Exception as e:
         return jsonify({"message": str(e)}), 500
 
-
 @app.route('/getFlightData', methods=['GET'])
 def get_flight_data():
     try:
+        client = bigquery.Client()
+
         # Get flightNum from the URL parameter
         flight_num = request.args.get('flightNum')
         if not flight_num:
@@ -323,6 +406,192 @@ def get_flight_data():
     except Exception as e:
         return jsonify({"error": "An error occurred", "details": str(e)}), 500
 
+client = bigquery.Client()
+
+
+@app.route('/flight-details', methods=['POST'])
+def get_flight_details():
+    try:
+        
+        # Get JSON input
+        data = request.get_json()
+        
+        if not data or 'flight_iataNumber' not in data:
+            return jsonify({'error': 'Missing flight_iataNumber in request body'}), 400
+            
+        flight_iata = data['flight_iataNumber'].strip().lower()
+
+        # BigQuery SQL with parameterized query
+        query = """
+            SELECT
+                flight_icaoNumber,
+                flight_iataNumber,
+                codeshared_airline_iataCode,
+                codeshared_flight_number,
+                airline_iataCode
+            FROM
+                 `flightmodelfra.fra_arr.codeshare_real`
+            WHERE
+                flight_iataNumber = @flight_iata
+            LIMIT 1
+        """
+
+        # Set up query parameters
+        job_config = bigquery.QueryJobConfig(
+            query_parameters=[
+                bigquery.ScalarQueryParameter("flight_iata", "STRING", flight_iata),
+            ]
+        )
+
+        # Execute query
+        query_job = client.query(query, job_config=job_config)
+        results = query_job.result()
+
+        # Process results
+        rows = list(results)
+        if not rows:
+            return jsonify({'error': f'Flight {flight_iata} not found'}), 404
+
+        row = rows[0]
+        flight_code = row.flight_iataNumber[:2].lower()
+        flight_number = row.flight_iataNumber[2:]
+
+       
+        # Configure headless browser
+        url = f'https://www.flightstats.com/v2/flight-tracker/{flight_code}/{flight_number}'
+        driver = None
+        chrome_options = Options()
+        chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--enable-unsafe-swiftshader")  # Add this flag
+        chrome_options.add_argument("--disable-software-rasterizer")
+        chrome_options.add_argument("--disable-webgl")
+        chrome_options.add_argument("--disable-features=WebGLDraftExtensions")
+        chrome_options.add_argument("--log-level=3")
+        chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+
+        # Initialize WebDriver
+        service = Service(ChromeDriverManager().install())
+        driver = webdriver.Chrome(service=service, options=chrome_options)
+
+        # Navigate to page
+        driver.get(url)
+
+        # Wait for critical elements to load
+        WebDriverWait(driver, 15).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "[class*='text-helper__TextHelper']"))
+        )
+
+        # Find departure times using CSS selector with partial class match
+        time_elements = driver.find_elements(
+            By.CSS_SELECTOR, 
+            "div[class*='text-helper__TextHelper']"
+        )
+
+        # Extract first two occurrences
+        if len(time_elements) >= 2:
+            scheduled = time_elements[14].text.strip()
+            actual = time_elements[16].text.strip()
+            arr_baggage = time_elements[33].text.strip().lower()
+            if(actual == "--"): return jsonify({'error': 'Flight not yet departed'}), 500
+            if(arr_baggage == "n/a"): return jsonify({'error':'Arrival Gate not yet avialable'}), 500
+            print(f"Scheduled Departure: {scheduled}")
+            print(f"Actual Departure: {actual}")
+        #     return jsonify({
+        #     'flight_icaoNumber': row.flight_icaoNumber,
+        #     'codeshared_airline_iataCode': row.codeshared_airline_iataCode,
+        #     'codeshared_flight_number': row.codeshared_flight_number,
+        #     'airline_iataCode': row.airline_iataCode,
+        #     'flight_code':flight_code,
+        #     'flight_number':flight_number,
+        #     'departure_delay':time_difference(actual[:5],scheduled[:5]),
+        #     'Scheduled Departure': scheduled[:5],
+        #     'Actual Departure': actual[:5]
+        # })
+            # return jsonify(OrderedDict([
+            #     ("type", "arrival"),
+            #     ("departure_delay", time_difference(actual[:5],scheduled[:5])),
+            #     ("arrival_iataCode", "fra"),
+            #     ("arrival_gate", arr_baggage),
+            #     ("airline_iataCode", row.airline_iataCode),
+            #     ("flight_number", flight_number),
+            #     ("codeshared_airline_iataCode", row.codeshared_airline_iataCode),
+            #     ("codeshared_flight_number", row.codeshared_flight_number),
+            #     ("scheduled_vs_actual_departure", time_difference(actual[:5],scheduled[:5]))
+            # ]))
+        #     data2 = OrderedDict([
+        #     ("type", "arrival"),
+        #     ("departure_delay", time_difference(actual[:5], scheduled[:5])),
+        #     ("arrival_iataCode", "fra"),
+        #     ("arrival_gate", arr_baggage),
+        #     ("airline_iataCode", row.airline_iataCode),
+        #     ("flight_number", flight_number),
+        #     ("codeshared_airline_iataCode", row.codeshared_airline_iataCode),
+        #     ("codeshared_flight_number", row.codeshared_flight_number),
+        #     ("scheduled_vs_actual_departure", time_difference(actual[:5], scheduled[:5]))
+        # ])
+            data2 = {
+                "scheduled_vs_actual_departure": time_difference(actual[:5], scheduled[:5]),
+                "codeshared_flight_number": str(float(row.codeshared_flight_number)),
+                "codeshared_airline_iataCode": row.codeshared_airline_iataCode,
+                "flight_number": flight_number,
+                "airline_iataCode": row.airline_iataCode,
+                "arrival_gate": arr_baggage,
+                "arrival_iataCode": "fra",
+                "departure_delay": time_difference(actual[:5], scheduled[:5]),
+                "type": "arrival"
+            }
+            
+             # ✅ Encode categorical inputs
+        encoded_data2, error_message = encode_new_input(data2)
+        if error_message:
+            return jsonify({"error": error_message}), 400
+
+        # ✅ Convert numerical inputs
+        numerical_features = ["departure_delay", "scheduled_vs_actual_departure"]
+        for col in numerical_features:
+            if col in data2:
+                try:
+                    encoded_data2[col] = float(data2[col])  # Convert to float
+                except ValueError:
+                    return jsonify({"error": f"❌ Invalid numerical value for '{col}'"}), 400
+
+        # ✅ Ensure all required features are present
+        expected_features = ['type', 'departure_delay', 'arrival_iataCode', 'arrival_gate',
+                             'airline_iataCode', 'flight_number', 'codeshared_airline_iataCode',
+                             'codeshared_flight_number', 'scheduled_vs_actual_departure']
+
+        missing_features = [col for col in expected_features if col not in encoded_data2]
+        if missing_features:
+            return jsonify({"error": f"❌ Missing features: {missing_features}"}), 400
+
+        # ✅ Convert final data2 into data2Frame with correct feature order
+        df = pd.DataFrame([encoded_data2])[expected_features]
+
+        # ✅ Ensure the model has a predict method before calling it
+        if not hasattr(model, "predict"):
+            return jsonify({"error": "❌ Loaded model does not support prediction. Verify 'best_model.pkl'."}), 500
+
+        # ✅ Make Prediction
+        prediction = model.predict(df)
+
+        print("✅ Prediction:", prediction[0])
+
+        return jsonify({"prediction": int(prediction[0])})
+
+        
+
+
+
+    except Exception as e:
+        return jsonify({'error': f'BigQuery error: {str(e)}'}), 500
+
+
+
+
 
 @app.route('/all')
 def index2():
@@ -340,7 +609,7 @@ def index4():
 def index5():
     return render_template('live-weather.html') 
 
-@app.route('/predict')
+@app.route('/predict12')
 def index6():
     return render_template('historical_data.html') 
 
@@ -360,6 +629,37 @@ def index9():
 def index10():
     return render_template('trajectory.html') 
 
+@app.route('/predict', methods=['POST'])
+def predict():
+    try:
+        # Get JSON data from request
+        data = request.get_json()
+
+        # Debugging: Print input data type
+        print("Received data:", data)
+
+        # Convert JSON data into a pandas DataFrame
+        df = pd.DataFrame([data])
+
+        # Debugging: Print DataFrame to check formatting
+        print("DataFrame structure:\n", df)
+
+        # Ensure the model has a predict method
+        if not hasattr(model, "predict"):
+            return jsonify({"error": "Model is not properly loaded"}), 500
+
+        # Make prediction
+        prediction = model.predict(df)
+
+        # Debugging: Print prediction result
+        print("Prediction:", prediction)
+
+        # Return prediction as JSON response
+        result = {"prediction": int(prediction[0])}
+        return jsonify(result)
+
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 if __name__ == '__main__':
     app.run(debug=True)

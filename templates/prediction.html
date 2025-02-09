@@ -1,0 +1,265 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Prediction</title>
+    <style>
+      /* General Styling */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+      }
+  
+      /* Form Container Styling */
+      .form-container {
+        background: #ffffff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+  
+      .form-container h2 {
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+  
+      /* Form Group Styling */
+      .form-group {
+        margin-bottom: 20px;
+      }
+  
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #555;
+      }
+  
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        box-sizing: border-box;
+        transition: all 0.3s;
+      }
+  
+      .form-group input:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+  
+      /* Submit Button Styling */
+      .form-group button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s;
+      }
+  
+      .form-group button:hover {
+        background-color: #0056b3;
+      }
+  
+      /* Modal Background */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      }
+  
+      /* Modal Content */
+      .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+  
+      /* Modal Title */
+      #modalTitle {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+  
+      /* Modal Message */
+      #modalMessage {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 20px;
+      }
+  
+      /* Close Button */
+      .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+  
+      .close-button:hover,
+      .close-button:focus {
+        color: black;
+        text-decoration: none;
+      }
+  
+      /* Close Action Button */
+      .close-button-action {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+  
+      .close-button-action:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Form Container -->
+    <div class="form-container">
+      <h2>Flight Delay Prediction</h2>
+      <form id="flightForm">
+        <!-- Flight Number Input -->
+        <div class="form-group">
+          <label for="flightNumber">Flight Number</label>
+          <input type="text" id="flightNumber" name="flightNumber" required="">
+        </div>
+        <!-- Airline Name Input -->
+        <div class="form-group">
+          <label for="airlineName">Airline Name</label>
+          <input type="text" id="airlineName" name="airlineName" required="">
+        </div>
+  
+      <div class="form-group">
+          <label for="departure_delay">Departure Delay</label>
+          <input type="text" id="departure_delay" name="departure_delay" required="">
+        </div>
+  
+      <div class="form-group">
+          <label for="scheduled_departure">Scheduled Departure</label>
+          <input type="text" id="scheduled_departure" name="scheduled_departure" required="">
+        </div>
+  
+      <div class="form-group">
+          <label for="actual_departure">Actual Departure</label>
+          <input type="text" id="actual_departure" name="actual_departure" required="">
+        </div>
+  
+      <div class="form-group">
+          <label for="departure_code">Departure IATA Code</label>
+          <input type="text" id="departure_code" name="departure_code" required="">
+        </div>
+      
+        <!-- Submit Button -->
+        <div class="form-group">
+          <button type="submit">Predict</button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Modal Structure -->
+    <div id="customModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <span id="closeModal" class="close-button">×</span>
+        <h3 id="modalTitle">Flight Prediction</h3>
+        <p id="modalMessage">The flight is on Time</p>
+        <button id="modalCloseButton" class="close-button-action">Close</button>
+      </div>
+    </div>
+  
+    <script>
+      /**
+       * Show Custom Modal
+       * @param {string} title - The title of the modal
+       * @param {string} message - The message to display in the modal
+       */
+      function showModal(title, message) {
+        const modal = document.getElementById('customModal');
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalMessage').textContent = message;
+  
+        // Show the modal
+        modal.style.display = 'block';
+  
+        // Close the modal when the "Close" button or "×" is clicked
+        document.getElementById('closeModal').onclick = () => (modal.style.display = 'none');
+        document.getElementById('modalCloseButton').onclick = () => (modal.style.display = 'none');
+  
+        // Close the modal when clicking outside the modal content
+        window.onclick = function (event) {
+          if (event.target === modal) {
+            modal.style.display = 'none';
+          }
+        };
+      }
+  
+      // Event listener for form submission
+      document.getElementById('flightForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+  
+        const flightNumber = document.getElementById('flightNumber').value.trim();
+        const airlineName = document.getElementById('airlineName').value.trim();
+  
+        try {
+          // Fetch the prediction from the API
+          const response = await fetch('http://127.0.0.1:5000/makeprediction', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ flightNumber, airlineName }),
+          });
+  
+          const result = await response.json();
+  
+          // Check the result and show modal
+          if (result) {
+            const prediction = result.message;
+            const status = prediction === 1 ? 'delayed' : 'on Time';
+            console.log(result)
+            showModal('Flight Prediction', `The flight is ${status}`);
+          } else {
+            showModal('No Data', 'No prediction data found for the provided flight and airline.');
+          }
+        } catch (error) {
+          showModal('Error', `Something went wrong: ${error.message}`);
+        }
+      });
+    </script>
+  
+  </body></html>

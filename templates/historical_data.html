@@ -161,11 +161,7 @@
         <label for="flightNumber">Flight Number</label>
         <input type="text" id="flightNumber" name="flightNumber" required>
       </div>
-      <!-- Airline Name Input -->
-      <div class="form-group">
-        <label for="airlineName">Airline Name</label>
-        <input type="text" id="airlineName" name="airlineName" required>
-      </div>
+
       <!-- Submit Button -->
       <div class="form-group">
         <button type="submit">Submit</button>
@@ -213,24 +209,23 @@
     document.getElementById('flightForm').addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      const flightNumber = document.getElementById('flightNumber').value.trim();
-      const airlineName = document.getElementById('airlineName').value.trim();
+      const flight_iataNumber = document.getElementById('flightNumber').value.trim();
 
       try {
         // Fetch the prediction from the API
-        const response = await fetch('http://127.0.0.1:5000/makeprediction', {
+        const response = await fetch('http://127.0.0.1:5000/flight-details', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ flightNumber, airlineName }),
+          body: JSON.stringify({ flight_iataNumber }),
         });
 
         const result = await response.json();
 
         // Check the result and show modal
-        if (result.message && result.message.length > 0) {
-          const prediction = result.message[0].predicted_is_delayed;
+        if (result) {
+          const prediction = result.prediction;
           const status = prediction === 1 ? 'delayed' : 'on Time';
           console.log(result)
           showModal('Flight Prediction', `The flight is ${status}`);
